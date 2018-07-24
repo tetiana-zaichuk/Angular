@@ -29,6 +29,8 @@ namespace PresentationLayer
             //string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AirportContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Airportdb;Trusted_Connection=True;"));
 
+            services.AddCors();
+
             services.AddMvc();
             //services.AddScoped<DataSeends>();
             //services.AddScoped<AirportContext>();
@@ -83,6 +85,11 @@ namespace PresentationLayer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200"));
 
             app.UseMvc();
             DbInitializer.Initialize(airportContext);

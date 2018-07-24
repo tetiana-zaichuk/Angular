@@ -1,0 +1,26 @@
+<h1>List of aircrafts types</h1>
+<input type="button" value="Add" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+  <thead>
+    <tr>
+      <td>AircraftModel</td>
+      <td>SeatsNumber</td>
+      <td>Carrying</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of aircraftsTypes">
+      <!-- [ngIf]="aircraftType?.id != a.id" [ngIfElse]="edit" -->
+      <!-- <ng-template > -->
+      <td>{{a?.aircraftModel}}</td>
+      <td>{{a?.seatsNumber}}</td>
+      <td>{{a?.carrying}}</td>
+      <!-- <td>
+                    <button class="btn btn-sm btn-primary" (click)="editType(a)">Change</button>
+                    <button class="btn btn-sm btn-danger" (click)="delete(a)">Delete</button>
+                </td> -->
+      <!-- </ng-template> -->
+    </tr>
+  </tbody>
+</table>
