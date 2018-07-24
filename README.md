@@ -1,4 +1,4 @@
-# Angular4
+# Angular
 Homework (bsa 18). Angular 4
 
 Для написанного ранее API (Аэропорт) необходимо создать клиент используя Angular.
