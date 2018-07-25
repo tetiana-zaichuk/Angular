@@ -1,4 +1,9 @@
 # Angular
+
+For start "angular" you need 
+first start "Airport": cd \GitHub\Angular\Airport\Airport => dotnet run, 
+then: cd \GitHub\Angular\angular => npm start. 
+
 Homework (bsa 18). Angular 4
 
 Для написанного ранее API (Аэропорт) необходимо создать клиент используя Angular.
