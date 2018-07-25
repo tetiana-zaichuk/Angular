@@ -1,3 +1,84 @@
-<p>
-  pilot-list works!
-</p>
+<h2>List of pilots
+  <input type="button" value="Add" class="btn btn-default" (click)="add()" />
+</h2>
+
+<div *ngIf="tableMode; else create">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>First name</td>
+        <td>Last name</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pilot of pilots" [class.selected]="pilot === selectedPilot">
+
+        <td>{{pilot?.firstName}}</td>
+        <td>{{pilot?.lastName}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="onSelect(pilot)">Details</button>
+          <button class="btn btn-sm btn-primary" (click)="editType(pilot)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(pilot)">Delete</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <pilot-detail [pilot]="selectedPilot"></pilot-detail>
+</div>
+
+<ng-template #create>
+  <div class="form-group">
+    <label>First name</label>
+    <input type="text" [(ngModel)]="pilot.firstName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Last name</label>
+    <input type="text" [(ngModel)]="pilot.lastName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>DOB</label>
+    <input type="text" [(ngModel)]="pilot.dob" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Experience</label>
+    <input type="text" [(ngModel)]="pilot.experience" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Crew id</label>
+    <input type="text" [(ngModel)]="pilot.crewId" class="form-control" />
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>
+
+<ng-template #edit>
+  <div class="form-group">
+    <label>First name</label>
+    <input type="text" [(ngModel)]="pilot.firstName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Last name</label>
+    <input type="text" [(ngModel)]="pilot.lastName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>DOB</label>
+    <input type="text" [(ngModel)]="pilot.dob" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Experience</label>
+    <input type="text" [(ngModel)]="pilot.experience" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Crew id</label>
+    <input type="text" [(ngModel)]="pilot.crewId" class="form-control" />
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>

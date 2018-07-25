@@ -23,6 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AircraftTypeService } from './Shared/Services/aircrafttype.service';
 import { AircraftService } from './Shared/Services/aircraft.service';
+import { CrewService } from './Shared/Services/crew.service';
+import { DepartureService } from './Shared/Services/departure.service';
+import { FlightService } from './Shared/Services/flight.service';
+import { PilotService } from './Shared/Services/pilot.service';
+import { StewardessService } from './Shared/Services/stewardess.service';
+import { TicketService } from './Shared/Services/ticket.service';
 import { AircraftTypeListComponent } from './aircraft-type-list/aircraft-type-list.component';
 import { AircraftTypeDetailComponent } from './aircraft-type-detail/aircraft-type-detail.component';
 import { AircraftListComponent } from './aircraft-list/aircraft-list.component';
@@ -44,6 +50,6 @@ import { StewardessListComponent } from './stewardess-list/stewardess-list.compo
   imports: [BrowserModule, FormsModule, HttpClientModule],
   declarations: [AppComponent, AircraftTypeListComponent, AircraftTypeDetailComponent, AircraftListComponent, AircraftDetailComponent, CrewDetailComponent, DepartureDetailComponent, FlightDetailComponent, PilotDetailComponent, TicketDetailComponent, StewardessDetailComponent, CrewListComponent, DepartureListComponent, FlightListComponent, PilotListComponent, TicketListComponent, StewardessListComponent],
   bootstrap: [AppComponent],
-  providers: [AircraftTypeService, AircraftService]
+  providers: [AircraftTypeService, AircraftService, CrewService, DepartureService, FlightService, PilotService, StewardessService, TicketService]
 })
 export class AppModule { } 

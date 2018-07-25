@@ -1,8 +1,7 @@
-export class AircraftType
-{
+export class AircraftType {
     constructor(
-    public id?: number,
-    public aircraftModel?: string,  
-    public seatsNumber?: number,
-    public carrying?: number) { }
+        public id?: number,
+        public aircraftModel?: string,
+        public seatsNumber?: number,
+        public carrying?: number) { }
 }

@@ -11,7 +11,7 @@ export class AircraftDetailComponent implements OnInit {
 
   @Input() aircraft: Aircraft;
   tableMode: boolean = true;
-  
+
   constructor() { }
 
   ngOnInit() {

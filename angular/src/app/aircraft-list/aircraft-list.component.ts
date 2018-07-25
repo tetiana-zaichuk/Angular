@@ -8,6 +8,7 @@ import { Aircraft } from '../Shared/Models/aircraft';
   styleUrls: ['./aircraft-list.component.css']
 })
 export class AircraftListComponent implements OnInit {
+  
   aircraft: Aircraft = new Aircraft();
   aircrafts: Aircraft[];
   tableMode: boolean = true;

@@ -1,73 +1,24 @@
+<header>
+    
+</header>
+<div class="container">
+    <div class="row">
+        <aircraft-type-list></aircraft-type-list>
 
+        <aircraft-list></aircraft-list>
 
-<aircraft-type-list></aircraft-type-list>
+        <pilot-list></pilot-list>
 
-<aircraft-list></aircraft-list>
+        <stewardess-list></stewardess-list>
 
-
-<!-- <crew-list></crew-list> -->
-
-
-<!-- <h1>List of aircrafts types</h1>
-<input type="button" value="Add" class="btn btn-default" (click)="add()" />
-<table *ngIf="tableMode; else create" class="table table-striped">
-    <thead>
-        <tr> 
-            <td>AircraftModel</td>
-            <td>SeatsNumber</td>
-            <td>Carrying</td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let a of aircraftsTypes"> -->
-                <!-- [ngIf]="aircraftType?.id != a.id" [ngIfElse]="edit" -->
-            <!-- <ng-template > -->
-                <!-- <td>{{a?.aircraftModel}}</td>
-                <td>{{a?.seatsNumber}}</td>
-                <td>{{a?.carrying}}</td> -->
-                <!-- <td>
-                    <button class="btn btn-sm btn-primary" (click)="editType(a)">Change</button>
-                    <button class="btn btn-sm btn-danger" (click)="delete(a)">Delete</button>
-                </td> -->
-            <!-- </ng-template> -->
-        <!-- </tr>
-    </tbody>
-</table> -->
- 
-<!-- шаблон для редактирования
-<ng-template #edit>
-    <td>
-        <input type="text" [(ngModel)]="aircraftType.aircraftModel" class="form-control" />
-    </td>
-    <td>
-        <input type="text" [(ngModel)]="aircraftType.seatsNumber" class="form-control" />
-    </td>
-    <td>
-        <input type="text" [(ngModel)]="aircraftType.carrying" class="form-control" />
-    </td>
-    <td>
-        <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
-        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
-    </td>
-</ng-template>
- 
-<!--шаблон для добавления-->
-<!-- <ng-template #create>
-    <div class="form-group">      
-        <label>AircraftModel</label>
-        <input type="text" [(ngModel)]="aircraftType.aircraftModel" class="form-control" />
+        <ticket-list></ticket-list>
     </div>
-    <div class="form-group">
-        <label>SeatsNumber</label>
-        <input type="text" [(ngModel)]="aircraftType.seatsNumber" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Carrying</label>
-        <input type="text" [(ngModel)]="aircraftType.carrying" class="form-control" />
-    </div>
-    <div>
-        <input type="button" value="Save" (click)="save()" class="btn btn-success" />
-        <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
-    </div>
-</ng-template> --> 
+</div>
+
+<!-- 
+    <crew-list></crew-list> 
+
+<departure-list></departure-list>
+<flight-list></flight-list>
+
+-->

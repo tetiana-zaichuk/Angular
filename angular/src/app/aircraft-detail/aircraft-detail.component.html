@@ -1,20 +1,27 @@
-<div *ngIf="aircraft">
-  <h2>Details</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <td>Aircraft release date</td>
-        <td>Aircraft name</td>
-        <td>Aircraft type</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{aircraft.aircraftReleaseDate}}</td>
-        <td>{{aircraft.aircraftName}}</td>
-        <td>{{aircraft.aircraftType}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="aircraft-detail col-md-12 collapse" id="collapseExample">
+  <div class="row">
+    <div *ngIf="aircraft">
+      <div class="col-md-12">
+        <h2>Details</h2>
+      </div>
+      <div class="col-md-12">
+        <div class="row detail-list-header">
+          <div class="col-md-3">Aircraft release date</div>
+          <div class="col-md-2">Aircraft name</div>
+          <div class="col-md-7">Aircraft type</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">{{aircraft.aircraftReleaseDate | date:'short'}}</div>
+          <div class="col-md-2">{{aircraft.aircraftName}}</div>
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md-4">{{aircraft.aircraftType?.aircraftModel}}</div>
+              <div class="col-md-4">{{aircraft.aircraftType?.seatsNumber}}</div>
+              <div class="col-md-4">{{aircraft.aircraftType?.carrying}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-

@@ -1,3 +1,69 @@
-<p>
-  ticket-list works!
-</p>
+<h2>List of tickets
+  <input type="button" value="Add" class="btn btn-default" (click)="add()" />
+</h2>
+
+<div *ngIf="tableMode; else create">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Price</td>
+        <td>Flight id</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets" [class.selected]="ticket === selectedTicket">
+        <td>{{ticket?.id}}</td>
+        <td>{{ticket?.price}}</td>
+        <td>{{ticket?.flightId}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="onSelect(ticket)">Details</button>
+          <button class="btn btn-sm btn-primary" (click)="editType(ticket)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(ticket)">Delete</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <ticket-detail [ticket]="selectedTicket"></ticket-detail>
+</div>
+
+<ng-template #create>
+  <div class="form-group">
+    <label>Id</label>
+    <input type="text" [(ngModel)]="ticket.id" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input type="text" [(ngModel)]="ticket.price" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Flight id</label>
+    <input type="text" [(ngModel)]="ticket.flightId" class="form-control" />
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>
+
+<ng-template #edit>
+  <div class="form-group">
+    <label>Id</label>
+    <input type="text" [(ngModel)]="ticket.id" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input type="text" [(ngModel)]="ticket.price" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Flight id</label>
+    <input type="text" [(ngModel)]="ticket.flightId" class="form-control" />
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>
