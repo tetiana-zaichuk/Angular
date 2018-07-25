@@ -5,6 +5,6 @@ export class Aircraft {
         public id?: number,
         public aircraftName?: string,
         public aircraftType?: AircraftType,
-        public aircraftReleaseDate?: Date
-       /* public exploitationTimeSpan?: TimeSpan*/) { }
+        public aircraftReleaseDate?: Date,
+        public exploitationTimeSpan?: Date/*TimeSpan*/) { }
 }

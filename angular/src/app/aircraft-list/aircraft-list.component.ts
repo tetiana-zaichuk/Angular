@@ -36,6 +36,12 @@ export class AircraftListComponent implements OnInit {
     }
     this.cancel();
   }
+  change(aircraft?: Aircraft){
+    this.aircraft = aircraft;
+    console.log(this.aircrafts[0]);
+    this.cancel();
+    this.tableMode = false;
+  }
   edit(aircraft: Aircraft) {
     this.aircraft = aircraft;
   }
