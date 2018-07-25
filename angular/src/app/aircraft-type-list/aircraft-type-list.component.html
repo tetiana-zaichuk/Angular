@@ -13,14 +13,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let type of aircraftsTypes" [class.selected]="aircraftType === selectedAircraftType">
+      <tr *ngFor="let type of aircraftsTypes" [class.selected]="aircrafttype === selectedAircraftType">
         <!-- [ngIf]="aircraftType?.id != a.id" [ngIfElse]="edit" -->
         <!-- <ng-template > -->
         <td>{{type?.aircraftModel}}</td>
         <td>{{type?.seatsNumber}}</td>
         <td>{{type?.carrying}}</td>
         <td>
-          <button class="btn btn-sm btn-primary" (click)="onSelect(aircraft)">Details</button>
+          <button class="btn btn-sm btn-primary" (click)="onSelect(type)">Details</button>
           <button class="btn btn-sm btn-primary" (click)="editType(type)">Edit</button>
           <button class="btn btn-sm btn-danger" (click)="delete(type)">Delete</button>
         </td>
@@ -29,7 +29,7 @@
     </tbody>
   </table>
   
-  <aircraft-type-detail [aircraftType]="selectedAircraftType"></aircraft-type-detail>
+  <aircraft-type-detail [aircrafttype]="selectedAircraftType"></aircraft-type-detail>
 </div>
 
 <ng-template #create>

@@ -5,5 +5,5 @@ export class Crew {
     constructor(
         public id?: number,
         public pilot?: Pilot,
-        public Stewardesses?: Stewardess[]) { }
+        public stewardesses?: Stewardess[]) { }
 }

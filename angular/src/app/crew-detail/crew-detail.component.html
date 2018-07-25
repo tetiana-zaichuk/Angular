@@ -1,3 +1,20 @@
-<p>
-  crew-detail works!
-</p>
+<div *ngIf="crew">
+    <h2>Details</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>Pilot</td>
+          <td>Stewardesses</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{crew.id}}</td>
+          <td>{{crew.pilot}}</td>
+          <td>{{crew.stewardesses}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

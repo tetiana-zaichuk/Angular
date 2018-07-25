@@ -8,7 +8,7 @@ import { AircraftType } from '../Shared/Models/aircraftType';
 })
 export class AircraftTypeDetailComponent implements OnInit {
 
-  @Input() aircraftType: AircraftType;
+  @Input() aircrafttype: AircraftType;
   tableMode: boolean = true;
 
   constructor() { }
