@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Crew } from '../Shared/Models/crew';
+import { Crew } from '../../Shared/Models/crew';
 
 @Component({
   selector: 'crew-detail',

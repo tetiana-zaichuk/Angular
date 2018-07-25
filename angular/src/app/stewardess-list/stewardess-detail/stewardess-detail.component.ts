@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Stewardess } from '../Shared/Models/stewardess'
+import { Stewardess } from '../../Shared/Models/stewardess'
 
 @Component({
   selector: 'stewardess-detail',

@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Departure } from '../../Shared/Models/departure';
 
 @Component({
-  selector: 'app-departure-detail',
+  selector: 'departure-detail',
   templateUrl: './departure-detail.component.html',
   styleUrls: ['./departure-detail.component.css']
 })
 export class DepartureDetailComponent implements OnInit {
+
+  @Input() departure: Departure;
+  tableMode: boolean = true;
 
   constructor() { }
 

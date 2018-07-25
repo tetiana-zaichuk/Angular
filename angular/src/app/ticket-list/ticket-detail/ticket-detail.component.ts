@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Ticket } from '../Shared/Models/ticket';
+import { Ticket } from '../../Shared/Models/ticket';
 
 @Component({
   selector: 'ticket-detail',

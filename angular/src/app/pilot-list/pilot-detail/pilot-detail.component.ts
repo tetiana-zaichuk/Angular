@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pilot } from '../Shared/Models/pilot'
+import { Pilot } from '../../Shared/Models/pilot'
 
 @Component({
   selector: 'pilot-detail',

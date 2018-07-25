@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Aircraft } from '../Shared/Models/aircraft';
+import { Aircraft } from '../../Shared/Models/aircraft';
 
 @Component({
   selector: 'aircraft-detail',
