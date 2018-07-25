@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AircraftType } from '../Shared/Models/aircraftType';
 
 @Component({
-  selector: 'app-aircraft-type-detail',
+  selector: 'aircraft-type-detail',
   templateUrl: './aircraft-type-detail.component.html',
   styleUrls: ['./aircraft-type-detail.component.css']
 })
 export class AircraftTypeDetailComponent implements OnInit {
+
+  @Input() aircraftType: AircraftType;
+  tableMode: boolean = true;
 
   constructor() { }
 

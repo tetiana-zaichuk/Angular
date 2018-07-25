@@ -21,7 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 //import { SharedModule } from './Shared/shared.module';
 import { AppComponent } from './app.component';
-  import { DataService } from './Shared/Services/data.service';
+import { AircraftTypeService } from './Shared/Services/aircrafttype.service';
+import { AircraftService } from './Shared/Services/aircraft.service';
 import { AircraftTypeListComponent } from './aircraft-type-list/aircraft-type-list.component';
 import { AircraftTypeDetailComponent } from './aircraft-type-detail/aircraft-type-detail.component';
 import { AircraftListComponent } from './aircraft-list/aircraft-list.component';
@@ -38,11 +39,11 @@ import { FlightListComponent } from './flight-list/flight-list.component';
 import { PilotListComponent } from './pilot-list/pilot-list.component';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { StewardessListComponent } from './stewardess-list/stewardess-list.component';
- 
+
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpClientModule],
-    declarations: [AppComponent, AircraftTypeListComponent, AircraftTypeDetailComponent, AircraftListComponent, AircraftDetailComponent, CrewDetailComponent, DepartureDetailComponent, FlightDetailComponent, PilotDetailComponent, TicketDetailComponent, StewardessDetailComponent, CrewListComponent, DepartureListComponent, FlightListComponent, PilotListComponent, TicketListComponent, StewardessListComponent],
-    bootstrap: [AppComponent],
-     providers: [DataService]
+  imports: [BrowserModule, FormsModule, HttpClientModule],
+  declarations: [AppComponent, AircraftTypeListComponent, AircraftTypeDetailComponent, AircraftListComponent, AircraftDetailComponent, CrewDetailComponent, DepartureDetailComponent, FlightDetailComponent, PilotDetailComponent, TicketDetailComponent, StewardessDetailComponent, CrewListComponent, DepartureListComponent, FlightListComponent, PilotListComponent, TicketListComponent, StewardessListComponent],
+  bootstrap: [AppComponent],
+  providers: [AircraftTypeService, AircraftService]
 })
 export class AppModule { } 

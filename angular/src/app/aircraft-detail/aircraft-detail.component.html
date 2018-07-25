@@ -1,3 +1,20 @@
-<p>
-  aircraft-detail works!
-</p>
+<div *ngIf="aircraft">
+  <h2>Details</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Aircraft release date</td>
+        <td>Aircraft name</td>
+        <td>Aircraft type</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{aircraft.aircraftReleaseDate}}</td>
+        <td>{{aircraft.aircraftName}}</td>
+        <td>{{aircraft.aircraftType}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

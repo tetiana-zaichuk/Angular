@@ -1,3 +1,19 @@
-<p>
-  aircraft-type-detail works!
-</p>
+<div *ngIf="aircraftType">
+    <h2>Details</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+            <td>Aircraft model</td>
+            <td>Seats number</td>
+            <td>Carrying</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>{{type?.aircraftModel}}</td>
+            <td>{{type?.seatsNumber}}</td>
+            <td>{{type?.carrying}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,3 +1,70 @@
-<p>
-  aircraft-list works!
-</p>
+<h2>List of aircrafts
+  <input type="button" value="Add" class="btn btn-default" (click)="add()" />
+</h2>
+
+<div *ngIf="tableMode; else create">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Aircraft name</td>
+        <td>Aircraft release date</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let aircraft of aircrafts" [class.selected]="aircraft === selectedAircraft">
+        <!--(click)="onSelect(aircraft)">    -->
+        <!-- [ngIf]="aircraft?.id != a.id" [ngIfElse]="edit" -->
+        <!-- <ng-template > -->
+        <td>{{aircraft?.aircraftName}}</td>
+        <td>{{aircraft?.aircraftReleaseDate}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="onSelect(aircraft)">Details</button>
+          <button class="btn btn-sm btn-primary" (click)="editType(aircraft)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(aircraft)">Delete</button>
+        </td>
+        <!-- </ng-template> -->
+      </tr>
+    </tbody>
+  </table>
+
+  <aircraft-detail [aircraft]="selectedAircraft"></aircraft-detail>
+</div>
+
+<ng-template #create>
+  <div class="form-group">
+    <label>aircraft name</label>
+    <input type="text" [(ngModel)]="aircraft.aircraftName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>aircraft release date</label>
+    <input type="text" [(ngModel)]="aircraft.aircraftReleaseDate" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Aircraft type</label>
+    <input type="text" [(ngModel)]="aircraft.aircraftType" class="form-control" />
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>
+
+<ng-template #edit>
+    <div class="form-group">
+      <label>aircraft name</label>
+      <input type="text" [(ngModel)]="aircraft.aircraftName" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>aircraft release date</label>
+      <input type="text" [(ngModel)]="aircraft.aircraftReleaseDate" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Aircraft type</label>
+      <input type="text" [(ngModel)]="aircraft.aircraftType" class="form-control" />
+    </div>
+    <div>
+      <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+      <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+    </div>
+  </ng-template>

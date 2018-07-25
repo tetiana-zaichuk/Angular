@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../Shared/Services/data.service';
+import { AircraftTypeService } from '../Shared/Services/aircrafttype.service';
 import { AircraftType } from '../Shared/Models/aircraftType';
 
 @Component({
@@ -11,17 +11,22 @@ export class AircraftTypeListComponent implements OnInit {
   aircraftType: AircraftType = new AircraftType();
   aircraftsTypes: AircraftType[];
   tableMode: boolean = true;
+  selectedAircraftType: AircraftType;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: AircraftTypeService) { }
 
   ngOnInit() {
-    this.loadTypes();    // загрузка данных при старте компонента  
+    this.loadTypes();   
   }
-  // получаем данные через сервис
+
   loadTypes() {
     this.dataService.getTypes().subscribe((data: AircraftType[]) => this.aircraftsTypes = data);
   }
-  // сохранение данных
+
+  onSelect(data: AircraftType): void {
+    this.selectedAircraftType = data;
+  }
+
   save() {
     if (this.aircraftType.id == null) {
       this.dataService.createType(this.aircraftType)
