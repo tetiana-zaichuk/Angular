@@ -23,7 +23,7 @@ export class AircraftListComponent implements OnInit {
   load() {
     this.dataService.get().subscribe((data: Aircraft[]) => this.aircrafts = data);
   }
-
+  
   onSelect(data: Aircraft): void {
     this.selectedAircraft = data;
   }

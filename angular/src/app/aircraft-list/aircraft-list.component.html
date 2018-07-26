@@ -7,21 +7,23 @@
 
 <div *ngIf="tableMode; else create" class="list-wrapper">
   <div class="row list-header">
-      <div class="col-md-2">Aircraft release date</div>
-    <div class="col-md-3">Aircraft name</div>
+    <div class="col-md-2">Aircraft release date</div>
+    <div class="col-md-2">Aircraft name</div>
     <div class="col-md-2">Exploitation time span</div>
   </div>
-  <div *ngFor="let aircraft of aircrafts; let ind = index; let even = even;" [class.selected]="aircraft === selectedAircraft" class="row list-data-wrapper" [ngClass]="{ even: light-grey-item }">
+   <div *ngFor="let aircraft of aircrafts; let i = index" [class.selected]="aircraft === selectedAircraft" class="row list-data-wrapper">
 
     <div class="col-md-2">{{aircraft?.aircraftReleaseDate | date:'short'}}</div>
-    <div class="col-md-3">{{aircraft?.aircraftName}}</div>
+    <div class="col-md-2">{{aircraft?.aircraftName}}</div>
     <div class="col-md-2">{{aircraft?.exploitationTimeSpan}}</div>
-    <div class="col-md-5">
-      <button class="btn btn-sm btn-primary" data-toggle="collapse" href="#collapseDetail" (click)="onSelect(aircraft)" aria-expanded="false" aria-controls="collapseDetail">Details</button>
+    <div class="col-md-6">
+      <a href="#aircrafts-{{ i }}" class="btn btn-info" data-toggle="collapse" (click)="onSelect(aircraft)">Details</a>
       <button class="btn btn-sm btn-primary" (click)="change(aircraft)">Edit</button>
       <button class="btn btn-sm btn-danger" (click)="delete(aircraft)">Delete</button>
     </div>
-    <aircraft-detail [aircraft]="selectedAircraft"></aircraft-detail>
+    <div id="aircrafts-{{ i }}" class="collapse">
+      <aircraft-detail [aircraft]="selectedAircraft"></aircraft-detail>
+    </div>
   </div>
 </div>
 
