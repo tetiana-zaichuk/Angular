@@ -12,7 +12,6 @@ export class TicketListComponent implements OnInit {
   ticket: Ticket = new Ticket();
   tickets: Ticket[];
   tableMode: boolean = true;
-  selectedTicket: Ticket;
 
   constructor(private dataService: TicketService) { }
 
@@ -24,10 +23,6 @@ export class TicketListComponent implements OnInit {
     this.dataService.get().subscribe((data: Ticket[]) => this.tickets = data);
   }
 
-  onSelect(data: Ticket): void {
-    this.selectedTicket = data;
-  }
-
   save() {
     if (this.ticket.id == null) {
       this.dataService.create(this.ticket).subscribe((data: Ticket) => this.tickets.push(data));
@@ -36,19 +31,18 @@ export class TicketListComponent implements OnInit {
     }
     this.cancel();
   }
-  edit(ticket: Ticket) {
-    this.ticket = ticket;
-  }
+
   cancel() {
     this.ticket = new Ticket();
     this.tableMode = true;
   }
+
   delete(ticket: Ticket) {
     this.dataService.delete(ticket.id).subscribe(data => this.load());
   }
-  add() {
-    console.log(this.tickets[0]);
-    this.cancel();
+  
+  add(ticket) {
+    this.ticket=ticket;
     this.tableMode = false;
   }
 }

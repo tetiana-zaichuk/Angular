@@ -61,7 +61,6 @@ export class AircraftListComponent implements OnInit {
   }
   add(aircraft) {
     this.aircraft=aircraft;
-this.selectedAircraftTypes=aircraft.aircraftType;
     this.tableMode = false;
   }
 

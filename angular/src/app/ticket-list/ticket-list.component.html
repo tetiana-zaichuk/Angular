@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <h2 class="title-h2">List of tickets </h2>
-    <input type="button" value="Add" class="btn btn-success add-btn" (click)="add()" />
+    <input type="button" value="Add" class="btn btn-success add-btn" (click)="add(ticket)" />
   </div>
 </div>
 
@@ -10,24 +10,26 @@
     <div class="col-md-5">Price</div>
     <div class="col-md-4">Flight id</div>
   </div>
-  <div *ngFor="let ticket of tickets; let i = index" [class.selected]="ticket === selectedTicket" class="row list-data-wrapper">
+  <div *ngFor="let ticket of tickets; let i = index" class="row list-data-wrapper">
     <div class="col-md-5">{{ticket?.price | currency}}</div>
     <div class="col-md-4">{{ticket?.flightId}}</div>
     <div class="col-md-3">
-      <a href="#tickets-{{ i }}" class="btn btn-info" data-toggle="collapse" (click)="onSelect(ticket)">Details</a>
-      <button class="btn btn-success" (click)="change(ticket)">Edit</button>
+      <a href="#tickets-{{ i }}" class="btn btn-info" data-toggle="collapse">Details</a>
+      <button class="btn btn-success" (click)="add(ticket)">Edit</button>
       <button class="btn btn-danger" (click)="delete(ticket)">Delete</button>
     </div>
-    <div id="tickets-{{ i }}" class="collapse">
-      <ticket-detail [ticket]="selectedTicket"></ticket-detail>
+    <div class="col-md-12">
+      <div id="tickets-{{ i }}" class="collapse">
+        <ticket-detail [ticket]="ticket"></ticket-detail>
+      </div>
     </div>
   </div>
 </div>
 
-<ng-template #create> 
+<ng-template #create>
   <div class="form-group">
     <label>Price</label>
-    <input type="text" [(ngModel)]="ticket.price" class="form-control" placeholder="$3,050.00"/>
+    <input type="text" [(ngModel)]="ticket.price" class="form-control" placeholder="1,050.00" />
   </div>
   <div class="form-group">
     <label>Flight id</label>

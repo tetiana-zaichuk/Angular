@@ -50,13 +50,13 @@
   <label>Aircraft type</label>
 
   <div class="form-group">
-      <select [(ngModel)]="selectedAircraftTypes">
-          <option *ngFor="let item of aircraftTypes" [ngValue]="item" >{{item.aircraftModel}}</option>
-       </select>
-       </div>
+    <select [(ngModel)]="selectedAircraftTypes">
+      <option *ngFor="let item of aircraftTypes" [ngValue]="item">{{item.aircraftModel}}</option>
+    </select>
+  </div>
 
 
-    <!-- <label>Aircraft model</label>
+  <!-- <label>Aircraft model</label>
     <input type="text" [(ngModel)]="aircraft.aircraftType.aircraftModel" class="form-control" />
   </div>
   <div class="form-group">
