@@ -9,12 +9,18 @@ import { Departure } from '../Models/departure';
 export class DepartureService {
 
     private url = "/api/Departures";
+    departures: Departure[];
 
     constructor(private http: HttpClient) {
     }
 
     get() {
         return this.http.get(this.url);
+    }
+
+    getDetail(id: number) {
+        this.http.get(this.url).subscribe((data: Departure[]) => this.departures = data);
+        return this.departures.find(d => d.id === id);
     }
 
     create(departure: Departure) {
