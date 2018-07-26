@@ -1,12 +1,14 @@
 .title-h2{
-    display: inline-block;
+    display: inline-block;    
+    color: #761212;   
 }
 .add-btn{
     margin-left: 10px;
     vertical-align: super;
 }
 .list-header{
-    background: lightgreen;
+    background:  #d9edf7;
+    font-weight: 700;
 }
 .list-data-wrapper > div{
     line-height: 47px;

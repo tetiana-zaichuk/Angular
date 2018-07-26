@@ -1,21 +1,23 @@
-<div *ngIf="stewardess">
-    <h2>Details</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>First name</td>
-          <td>Last name</td>
-          <td>DOB</td>
-          <td>Crew Id</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{stewardess?.firstName}}</td>
-          <td>{{stewardess?.lastName}}</td>
-          <td>{{stewardess?.dob}}</td>
-          <td>{{stewardess?.crewId}}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="col-md-12 " *ngIf="stewardess">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h4>Details</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="row detail-list-header">
+        <div class="col-md-3">First name</div>
+        <div class="col-md-3">Last name</div>
+        <div class="col-md-3">DOB</div>
+        <div class="col-md-3">Crew id</div>
+      </div>
+      <div class="row detail-list">
+        <div class="col-md-3">{{stewardess?.firstName}}</div>
+        <div class="col-md-3">{{stewardess?.lastName}}</div>
+        <div class="col-md-3">{{stewardess?.dob | date:'longDate'}}</div>
+        <div class="col-md-3">{{stewardess?.crewId}}</div>
+      </div>
+    </div>
+
   </div>
+</div>

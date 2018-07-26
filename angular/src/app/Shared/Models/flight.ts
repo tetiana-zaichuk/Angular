@@ -6,6 +6,6 @@ export class Flight {
         public departure?: string,
         public departureTime?: Date,
         public destination?: string,
-        public ArrivalTime?: Date,
-        public Tickets?: Ticket[]) { }
+        public arrivalTime?: Date,
+        public tickets?: Ticket[]) { }
 }

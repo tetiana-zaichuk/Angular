@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartureService } from '../Shared/Services/departure.service';
 import { Departure } from '../Shared/Models/departure';
+import { Flight } from '../Shared/Models/flight';
 
 @Component({
   selector: 'departure-list',
@@ -9,10 +10,10 @@ import { Departure } from '../Shared/Models/departure';
 })
 export class DepartureListComponent implements OnInit {
 
-  aircraft: Departure = new Departure();
-  aircrafts: Departure[];
+  departure: Departure = new Departure();
+  departures: Departure[];
   tableMode: boolean = true;
-  selectedAircraft: Departure;
+  selected: Departure;
 
   constructor(private dataService: DepartureService) { }
 
@@ -21,33 +22,38 @@ export class DepartureListComponent implements OnInit {
   }
 
   load() {
-    this.dataService.get().subscribe((data: Departure[]) => this.aircrafts = data);
+    this.dataService.get().subscribe((data: Departure[]) => this.departures = data);
   }
 
   onSelect(data: Departure): void {
-    this.selectedAircraft = data;
+    this.selected = data;
   }
-
+  change(departure?: Departure){
+    this.departure = departure;
+    console.log(this.departures[0]);
+    this.cancel();
+    this.tableMode = false;
+  }
   save() {
-    if (this.aircraft.id == null) {
-      this.dataService.create(this.aircraft).subscribe((data: Departure) => this.aircrafts.push(data));
+    if (this.departure.id == null) {
+      this.dataService.create(this.departure).subscribe((data: Departure) => this.departures.push(data));
     } else {
-      this.dataService.update(this.aircraft).subscribe(data => this.load());
+      this.dataService.update(this.departure).subscribe(data => this.load());
     }
     this.cancel();
   }
-  edit(aircraft: Departure) {
-    this.aircraft = aircraft;
+  edit(departure: Departure) {
+    this.departure = departure;
   }
   cancel() {
-    this.aircraft = new Departure();
+    this.departure = new Departure();
     this.tableMode = true;
   }
-  delete(aircraft: Departure) {
-    this.dataService.delete(aircraft.id).subscribe(data => this.load());
+  delete(departure: Departure) {
+    this.dataService.delete(departure.id).subscribe(data => this.load());
   }
   add() {
-    console.log(this.aircrafts[0]);
+    console.log(this.departures[0]);
     this.cancel();
     this.tableMode = false;
   }

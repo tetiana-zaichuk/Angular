@@ -1,4 +1,4 @@
-<div class="aircraft-detail col-md-12 " *ngIf="aircraft">
+<div class="col-md-12 " *ngIf="aircraft">
   <div class="row">
 
     <div class="col-md-12">
@@ -9,7 +9,7 @@
         <div class="col-md-2">Aircraft release date</div>
         <div class="col-md-2">Aircraft name</div>
         <div class="col-md-2">Exploitation time span</div>
-        <div class="col-md-6" text-align="center">
+        <div class="col-md-6">
           <div class="row">
             <div class="col-md-4">Aircraft type: model</div>
             <div class="col-md-4">Aircraft type: seats</div>
@@ -17,8 +17,8 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-2">{{aircraft?.aircraftReleaseDate | date:'short'}}</div>
+      <div class="row detail-list">
+        <div class="col-md-2">{{aircraft?.aircraftReleaseDate | date:'longDate'}}</div>
         <div class="col-md-2">{{aircraft?.aircraftName}}</div>
         <div class="col-md-2">{{aircraft?.exploitationTimeSpan}}</div>
         <div class="col-md-6">
