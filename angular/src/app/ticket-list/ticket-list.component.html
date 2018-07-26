@@ -24,33 +24,10 @@
   </div>
 </div>
 
-<ng-template #create>
-  <div class="form-group">
-    <label>Id</label>
-    <input type="text" [(ngModel)]="ticket.id" class="form-control" />
-  </div>
+<ng-template #create> 
   <div class="form-group">
     <label>Price</label>
-    <input type="text" [(ngModel)]="ticket.price" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Flight id</label>
-    <input type="text" [(ngModel)]="ticket.flightId" class="form-control" />
-  </div>
-  <div>
-    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
-    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
-  </div>
-</ng-template>
-
-<ng-template #edit>
-  <div class="form-group">
-    <label>Id</label>
-    <input type="text" [(ngModel)]="ticket.id" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Price</label>
-    <input type="text" [(ngModel)]="ticket.price" class="form-control" />
+    <input type="text" [(ngModel)]="ticket.price" class="form-control" placeholder="$3,050.00"/>
   </div>
   <div class="form-group">
     <label>Flight id</label>

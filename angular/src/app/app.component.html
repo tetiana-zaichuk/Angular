@@ -1,19 +1,62 @@
-<header>
+<!DOCTYPE html>
+<html>
 
-</header>
-<div class="container">
-    <div class="row">
-        <aircraft-type-list></aircraft-type-list>
+<head>
+    <meta charset="utf-8" />
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
-        <aircraft-list></aircraft-list>
-        <departure-list></departure-list>
-        <pilot-list></pilot-list>
-        <stewardess-list></stewardess-list>
-        <ticket-list></ticket-list>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Types of queries</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a>All the data</a>
+                    </li>
+                    <li>
+                        <a>User</a>
+                    </li>
+                    <li>
+                        <a>Post</a>
+                    </li>
+                    <li>
+                        <a>Todo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        <div class="row">
+            <aircraft-type-list></aircraft-type-list>
+
+            <aircraft-list></aircraft-list>
+            <departure-list></departure-list>
+            <pilot-list></pilot-list>
+            <stewardess-list></stewardess-list>
+            <ticket-list></ticket-list>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2018 - Airport</p>
+        </footer>
     </div>
-</div>
+</body>
 
-<!--     
- <crew-list></crew-list> 
+</html>
+
+<!--     <div class="container">
+     <crew-list></crew-list> 
 <flight-list></flight-list>  
 -->

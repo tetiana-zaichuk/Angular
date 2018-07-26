@@ -46,9 +46,10 @@ import { FlightListComponent } from './flight-list/flight-list.component';
 import { PilotListComponent } from './pilot-list/pilot-list.component';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { StewardessListComponent } from './stewardess-list/stewardess-list.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   declarations: [AppComponent, AircraftTypeListComponent, AircraftTypeDetailComponent, AircraftListComponent, AircraftDetailComponent, CrewDetailComponent, DepartureDetailComponent, FlightDetailComponent, PilotDetailComponent, TicketDetailComponent, StewardessDetailComponent, CrewListComponent, DepartureListComponent, FlightListComponent, PilotListComponent, TicketListComponent, StewardessListComponent],
   bootstrap: [AppComponent],
   providers: [AircraftTypeService, AircraftService, CrewService, DepartureService, FlightService, PilotService, StewardessService, TicketService]
