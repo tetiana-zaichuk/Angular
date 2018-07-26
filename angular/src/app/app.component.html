@@ -1,60 +1,60 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">                   
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- <a class="navbar-brand">aaa</a> -->
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a routerLink="/flights">Flights</a>
-                    </li>
-                    <li>
-                        <a routerLink="/departures">Departures</a>
-                    </li>
-                    <li>
-                        <a routerLink="/aircrafts">Aircrafts</a>
-                    </li>
-                    <li>
-                        <a routerLink="/crews">Crews</a>
-                    </li>
-                </ul>
-            </div>
+</head> -->
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- <a class="navbar-brand">aaa</a> -->
         </div>
-    </nav>
-    <div class="container body-content">
-        <div class="row">
-                
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a routerLink="/flights">Flights</a>
+                </li>
+                <li>
+                    <a routerLink="/departures">Departures</a>
+                </li>
+                <li>
+                    <a routerLink="/aircrafts">Aircrafts</a>
+                </li>
+                <li>
+                    <a routerLink="/crews">Crews</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container body-content">
+    <div class="row">
+
         <router-outlet></router-outlet>
- <!-- <aircraft-type-list></aircraft-type-list>
+        <!-- <aircraft-type-list></aircraft-type-list>
             <aircraft-list></aircraft-list>
             <departure-list></departure-list>
             <pilot-list></pilot-list>
             <stewardess-list></stewardess-list>
             <ticket-list></ticket-list> -->
-        </div>
-        <hr />
-        <footer>
-            <p>&copy; 2018 - Airport</p>
-        </footer>
     </div>
-</body>
+    <hr />
+    <footer>
+        <p>&copy; 2018 - Airport</p>
+    </footer>
+</div>
+<!-- </body>
 
-</html>
+</html> -->
 
 <!--     <div class="container">
      <crew-list></crew-list> 

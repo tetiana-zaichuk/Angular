@@ -1,20 +1,3 @@
-/*import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }*/
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -46,6 +29,7 @@ import { FlightListComponent } from './flight-list/flight-list.component';
 import { PilotListComponent } from './pilot-list/pilot-list.component';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { StewardessListComponent } from './stewardess-list/stewardess-list.component';
+
 import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
