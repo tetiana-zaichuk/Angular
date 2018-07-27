@@ -36,62 +36,9 @@
 <ng-template #create>
   <div class="form-group">
     <label>Departure date</label>
-    <input type="text" [(ngModel)]="departure.departureDate" class="form-control" placeholder="7/15/18, 7:35 PM" />
+    <input type="text" [(ngModel)]="departure.departureDate" class="form-control" placeholder="7/15/18, 7:35 PM (more then now)" />
   </div>
-  <!-- 
-  <div class="form-group">
-    <label>Aircraft name</label>
-    <input type="text" [(ngModel)]="departure.aircraft.aircraftName" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Aircraft release date</label>
-    <input type="text" [(ngModel)]="departure.aircraft.aircraftReleaseDate" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Exploitation time span</label>
-    <input type="text" [(ngModel)]="departure.aircraft.exploitationTimeSpan" class="form-control" />
-  </div> -->
-  <label>Aircraft</label>
-  <div class="form-group">
-    <select [(ngModel)]="selectedAircraft">
-      <option *ngFor="let item of aircrafts" [ngValue]="item">{{item.aircraftName}}</option>
-    </select>
-  </div>
-  <label>Flight</label>
-  <div class="form-group">
-    <select [(ngModel)]="selectedFlight">
-      <option *ngFor="let item of flights" [ngValue]="item">{{item.departure}} - {{item.destination}}</option>
-    </select>
-  </div>
-
-  <!-- <div class="form-group">
-    <label>Departure</label>
-    <input type="text" [(ngModel)]="departure.flight.departure" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Departure time</label>
-    <input type="text" [(ngModel)]="departure.flight.departureTime" class="form-control" placeholder="7/15/18, 7:35 PM" />
-  </div>
-  <div class="form-group">
-    <label>Destination</label>
-    <input type="text" [(ngModel)]="departure.flight.destination" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Arrival time</label>
-    <input type="text" [(ngModel)]="departure.flight.arrivalTime" class="form-control" placeholder="7/15/18, 7:35 PM" />
-  </div> -->
-  <label>Crew</label>
-  <div class="form-group">
-    <select [(ngModel)]="selectedCrew">
-      <option *ngFor="let item of crews" [ngValue]="item">{{item.id}}</option>
-    </select>
-  </div>
-
-  <!-- <div class="form-group">
-   
-    <input type="text" [(ngModel)]="departure.crew.id" class="form-control" />
-  </div> -->
-
+  <label>Create other entities in their menu</label>
   <div>
     <input type="button" value="Save" (click)="save()" class="btn btn-success" />
     <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />

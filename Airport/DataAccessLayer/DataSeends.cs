@@ -26,9 +26,9 @@ namespace DataAccessLayer
 
         public static List<Ticket> Tickets = new List<Ticket>()
         {
-            new Ticket(){ FlightId = 1, Price = 5000},
-            new Ticket(){ FlightId = 2, Price = 3500},
-            new Ticket(){ FlightId = 3, Price = 3500}
+            new Ticket(){ FlightId = 1, Price = 500},
+            new Ticket(){ FlightId = 2, Price = 350},
+            new Ticket(){ FlightId = 3, Price = 350}
         };
 
         public static List<Flight> Flights = new List<Flight>()

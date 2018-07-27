@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightService } from '../Shared/Services/flight.service';
-import { TicketService } from '../Shared/Services/ticket.service';
 import { DepartureService } from '../Shared/Services/departure.service';
 import { Departure } from '../Shared/Models/departure';
-import { Ticket } from '../Shared/Models/ticket';
 import { Flight } from '../Shared/Models/flight';
 
 @Component({
@@ -15,12 +13,10 @@ export class FlightListComponent implements OnInit {
   flight: Flight = new Flight();
   flights: Flight[];
   tableMode: boolean = true;
-  selectedTickets: Ticket[];
-  tickets: Ticket[];
   departures: Departure[];
   selectedDeparture: Departure = new Departure();
 
-  constructor(private flightService: FlightService, private ticketService: TicketService, private departureService: DepartureService) { }
+  constructor(private flightService: FlightService, private departureService: DepartureService) { }
 
   ngOnInit() {
     this.load();
@@ -28,12 +24,11 @@ export class FlightListComponent implements OnInit {
 
   load() {
     this.flightService.get().subscribe((data: Flight[]) => this.flights = data);
-    this.ticketService.get().subscribe((data: Ticket[]) => this.tickets = data);
     this.departureService.get().subscribe((data: Departure[]) => this.departures = data);
   }
 
   save() {
-    this.flight.tickets=this.selectedTickets;
+    this.flight.tickets=null; 
     if (this.flight.id == null) {
       this.flightService.create(this.flight).subscribe((data: Flight) => this.flights.push(data));
     } else {
