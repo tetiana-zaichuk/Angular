@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartureService } from '../Shared/Services/departure.service';
-import { FlightService } from '../Shared/Services/flight.service';
-import { AircraftService } from '../Shared/Services/aircraft.service';
-import { CrewService } from '../Shared/Services/crew.service';
 import { Departure } from '../Shared/Models/departure';
-import { Flight } from '../Shared/Models/flight';
-import { Aircraft } from '../Shared/Models/aircraft';
-import { Crew } from '../Shared/Models/crew';
 
 @Component({
   selector: 'departure-list',
@@ -19,34 +13,20 @@ export class DepartureListComponent implements OnInit {
   departures: Departure[];
   tableMode: boolean = true;
 
-  selectedFlight: Flight = new Flight();
-  flights: Flight[];
-
-  selectedAircraft: Aircraft = new Aircraft();
-  aircrafts: Aircraft[];
-
-  selectedCrew: Crew = new Crew();
-  crews: Crew[];
-
-
-  constructor(private departureService: DepartureService, private flightService: FlightService,
-    private aircraftService: AircraftService, private crewService: CrewService) { }
+  constructor(private departureService: DepartureService) { }
 
   ngOnInit() {
     this.load();
   }
 
   load() {
-    this.departureService.get().subscribe((data: Departure[]) => this.departures = data);
-    this.flightService.get().subscribe((data: Flight[]) => this.flights = data);
-    this.aircraftService.get().subscribe((data: Aircraft[]) => this.aircrafts = data);
-    this.crewService.get().subscribe((data: Crew[]) => this.crews = data);
+    this.departureService.get().subscribe((data: Departure[]) => this.departures = data);  
   }
 
   save() {
-    this.departure.flight = null; //this.selectedFlight;
-    this.departure.aircraft = null; //this.selectedAircraft;
-    this.departure.crew = null; //this.selectedCrew;
+    this.departure.flight = null; 
+    this.departure.aircraft = null; 
+    this.departure.crew = null; 
     if (this.departure.id == null) {
       this.departureService.create(this.departure).subscribe((data: Departure) => this.departures.push(data));
     } else {

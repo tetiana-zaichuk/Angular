@@ -62,12 +62,6 @@
     <input type="text" [(ngModel)]="flight.arrivalTime" class="form-control" placeholder="7/15/18, 7:35 PM" />
   </div>
   <label>Tickets create in menu tickets</label>
-  <!-- <label>Tickets</label>
-  <div class="form-group">
-    <select [(ngModel)]="selectedTickets" multiple class="form-control">
-      <option *ngFor="let item of tickets" [ngValue]="item">Id: {{item.id}} - price: {{item.price}}</option>
-    </select>
-  </div> -->
   <div>
     <input type="button" value="Save" (click)="save()" class="btn btn-success" />
     <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
