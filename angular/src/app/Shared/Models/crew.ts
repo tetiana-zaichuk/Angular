@@ -5,5 +5,9 @@ export class Crew {
     constructor(
         public id?: number,
         public pilot?: Pilot,
-        public stewardesses?: Stewardess[]) { }
+        public stewardesses?: Stewardess[]) {
+            
+        this.pilot = new Pilot();
+
+    }
 }

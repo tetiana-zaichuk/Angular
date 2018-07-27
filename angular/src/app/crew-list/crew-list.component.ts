@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CrewService } from '../Shared/Services/crew.service';
+import { PilotService } from '../Shared/Services/pilot.service';
+import { StewardessService } from '../Shared/Services/stewardess.service';
 import { Crew } from '../Shared/Models/crew';
+import { Pilot } from '../Shared/Models/pilot';
+import { Stewardess } from '../Shared/Models/stewardess';
 
 @Component({
   selector: 'crew-list',
@@ -11,44 +15,46 @@ export class CrewListComponent implements OnInit {
 
   crew: Crew = new Crew();
   crews: Crew[];
+  selectedPilot: Pilot = new Pilot();
+  pilots: Pilot[];
+  stewardesses: Stewardess[];  
+  selectedStewardesses: Stewardess = new Stewardess();
   tableMode: boolean = true;
-  selectedCrew: Crew;
 
-  constructor(private dataService: CrewService) { }
+  constructor(private CrewService: CrewService, private PilotService: PilotService, private StewardessService: StewardessService) { }
 
   ngOnInit() {
     this.load();
   }
 
   load() {
-    this.dataService.get().subscribe((data: Crew[]) => this.crews = data);
-  }
-
-  onSelect(data: Crew): void {
-    this.selectedCrew = data;
+    this.CrewService.get().subscribe((data: Crew[]) => this.crews = data);
+    this.PilotService.get().subscribe((data: Pilot[]) => this.pilots = data);
+    this.StewardessService.get().subscribe((data: Stewardess[]) => this.stewardesses = data);
   }
 
   save() {
+    this.crew.pilot=this.selectedPilot;
+    this.crew.stewardesses.push(this.selectedStewardesses);
     if (this.crew.id == null) {
-      this.dataService.create(this.crew).subscribe((data: Crew) => this.crews.push(data));
+      this.CrewService.create(this.crew).subscribe((data: Crew) => this.crews.push(data));
     } else {
-      this.dataService.update(this.crew).subscribe(data => this.load());
+      this.CrewService.update(this.crew).subscribe(data => this.load());
     }
     this.cancel();
   }
-  edit(crew: Crew) {
-    this.crew = crew;
-  }
+
   cancel() {
     this.crew = new Crew();
     this.tableMode = true;
   }
+
   delete(crew: Crew) {
-    this.dataService.delete(crew.id).subscribe(data => this.load());
+    this.CrewService.delete(crew.id).subscribe(data => this.load());
   }
-  add() {
-    console.log(this.crews[0]);
-    this.cancel();
+
+  add(crew) {
+    this.crew = crew;
     this.tableMode = false;
   }
 

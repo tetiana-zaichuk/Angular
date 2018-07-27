@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'crews', component: CrewListComponent },
   { path: 'aircraftsTypes', component: AircraftTypeListComponent },
   { path: 'pilots', component: PilotListComponent },
-  { path: 'stewardess', component: StewardessListComponent },
+  { path: 'stewardesses', component: StewardessListComponent },
   { path: 'tickets', component: TicketListComponent }
 ];
 

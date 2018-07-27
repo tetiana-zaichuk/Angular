@@ -1,20 +1,42 @@
-<div *ngIf="crew">
-    <h2>Details</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>Id</td>
-          <td>Pilot</td>
-          <td>Stewardesses</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{crew.id}}</td>
-          <td>{{crew.pilot}}</td>
-          <td>{{crew.stewardesses}}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="col-md-12 " *ngIf="crew">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h4>Details</h4>
+    </div>
+    <div class="col-md-12">
+        <div class="row detail-list-header">
+        <div class="col-md-2">Crew id</div>
+        <div class="col-md-3">Pilot first name</div>
+        <div class="col-md-3">Pilot last name</div>
+        <div class="col-md-2">Pilot DOB</div>
+        <div class="col-md-2">Pilot experience</div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">{{crew?.id}}</div>
+        <div class="col-md-3">{{crew?.pilot?.firstName}}</div>
+        <div class="col-md-3">{{crew?.pilot?.lastName}}</div>
+        <div class="col-md-2">{{crew?.pilot?.experience}}</div>
+        <div class="col-md-2">{{crew?.pilot?.dob | date:'short'}}</div>
+      </div> 
+
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Stewardesses</h4>
+        </div>
+      </div>
+      <div class="row detail-list-header">
+        <div class="col-md-4">Stewardess first name</div>
+        <div class="col-md-4">Stewardess last name</div>
+        <div class="col-md-4">Stewardess DOB</div>
+      </div>
+      <div *ngFor="let stewardess of crew.stewardesses" class="row list-data-wrapper">
+        <div class="col-md-4">{{stewardess?.firstName}}</div>
+        <div class="col-md-4">{{stewardess?.lastName}}</div>
+        <div class="col-md-4">{{stewardess?.dob | date:'short'}}</div>
+      </div> 
+
+    </div>
+
   </div>
-  
+</div>

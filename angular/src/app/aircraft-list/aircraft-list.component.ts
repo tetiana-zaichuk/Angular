@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AircraftService } from '../Shared/Services/aircraft.service';
 import { AircraftTypeService } from '../Shared/Services/aircrafttype.service';
 import { Aircraft } from '../Shared/Models/aircraft';
-import {AircraftType} from '../Shared/Models/aircraftType';
+import { AircraftType } from '../Shared/Models/aircraftType';
 
 @Component({
   selector: 'aircraft-list',
@@ -14,19 +14,18 @@ export class AircraftListComponent implements OnInit {
   aircraft: Aircraft = new Aircraft();
   aircrafts: Aircraft[];
   aircraftTypes: AircraftType[];
-  selectedAircraftTypes:AircraftType= new Aircraft();
+  selectedAircraftType: AircraftType= new AircraftType();
   tableMode: boolean = true;
-  selectedAircraft: Aircraft;
 
-  constructor(private dataService: AircraftService, private aircraftTypeService: AircraftTypeService) { }
+  constructor(private AircraftService: AircraftService, private aircraftTypeService: AircraftTypeService) { }
 
   ngOnInit() {
     this.load();
   }
 
   load() {
-    this.dataService.get().subscribe((data: Aircraft[]) => this.aircrafts = data);
-    this.aircraftTypeService.getTypes().subscribe((data: Aircraft[]) => this.aircraftTypes = data);
+    this.AircraftService.get().subscribe((data: Aircraft[]) => this.aircrafts = data);
+    this.aircraftTypeService.get().subscribe((data: AircraftType[]) => this.aircraftTypes = data);
   }
   
   // onSelect(data: Aircraft): void {
@@ -35,12 +34,13 @@ export class AircraftListComponent implements OnInit {
 
   save() {
     
-    this.aircraft.aircraftType=this.selectedAircraftTypes;
+    this.aircraft.aircraftType=this.selectedAircraftType;
     console.log(this.aircraft);
     if (this.aircraft.id == null) {
-      this.dataService.create(this.aircraft).subscribe((data: Aircraft) => this.aircrafts.push(data));
+      this.aircraft.id=0;
+      this.AircraftService.create(this.aircraft).subscribe((data: Aircraft) => this.aircrafts.push(data));
     } else {
-      this.dataService.update(this.aircraft).subscribe(data => this.load());
+      this.AircraftService.update(this.aircraft).subscribe(data => this.load());
     }
     this.cancel();
   }
@@ -57,7 +57,7 @@ export class AircraftListComponent implements OnInit {
     this.tableMode = true;
   }
   delete(aircraft: Aircraft) {
-    this.dataService.delete(aircraft.id).subscribe(data => this.load());
+    this.AircraftService.delete(aircraft.id).subscribe(data => this.load());
   }
   add(aircraft) {
     this.aircraft=aircraft;

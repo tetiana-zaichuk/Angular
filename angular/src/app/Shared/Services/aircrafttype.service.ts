@@ -10,21 +10,20 @@ export class AircraftTypeService {
 
     private url = "/api/AircraftsTypes";
 
-    constructor(private http: HttpClient) {
-    }
+    constructor(private http: HttpClient) {}
 
-    getTypes() {
+    get() {
         return this.http.get(this.url);
     }
 
-    createType(aircraftType: AircraftType) {
+    create(aircraftType: AircraftType) {
         return this.http.post(this.url, aircraftType);
     }
-    updateType(aircraftType: AircraftType) {
+    update(aircraftType: AircraftType) {
 
         return this.http.put(this.url + '/' + aircraftType.id, aircraftType);
     }
-    deleteType(id: number) {
+    delete(id: number) {
         return this.http.delete(this.url + '/' + id);
     }
 }

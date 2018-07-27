@@ -33,8 +33,8 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public async Task<ObjectResult> PostAircraft([FromBody]Aircraft aircraft)
         {
-            if (aircraft == null)
-                return BadRequest("Enter correct entity");
+            //if (aircraft == null)
+            //    return BadRequest("Enter correct entity");
             if (DateTime.Compare(aircraft.AircraftReleaseDate, DateTime.UtcNow) >= 0)
                 return BadRequest("Wrong release date");
             if (!await Services.ValidationForeignIdAsync(aircraft))

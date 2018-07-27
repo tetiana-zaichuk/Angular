@@ -11,46 +11,37 @@ export class AircraftTypeListComponent implements OnInit {
   aircraftType: AircraftType = new AircraftType();
   aircraftsTypes: AircraftType[];
   tableMode: boolean = true;
-  selectedAircraftType: AircraftType;
 
   constructor(private dataService: AircraftTypeService) { }
 
   ngOnInit() {
-    this.loadTypes();   
+    this.load();
   }
 
-  loadTypes() {
-    this.dataService.getTypes().subscribe((data: AircraftType[]) => this.aircraftsTypes = data);
-  }
-
-  onSelect(data: AircraftType): void {
-    this.selectedAircraftType = data;
+  load() {
+    this.dataService.get().subscribe((data: AircraftType[]) => this.aircraftsTypes = data);
   }
 
   save() {
     if (this.aircraftType.id == null) {
-      this.dataService.createType(this.aircraftType)
-        .subscribe((data: AircraftType) => this.aircraftsTypes.push(data));
+      this.dataService.create(this.aircraftType).subscribe((data: AircraftType) => this.aircraftsTypes.push(data));
     } else {
-      this.dataService.updateType(this.aircraftType)
-        .subscribe(data => this.loadTypes());
+      this.dataService.update(this.aircraftType).subscribe(data => this.load());
     }
     this.cancel();
   }
-  editType(p: AircraftType) {
-    this.aircraftType = p;
-  }
+
   cancel() {
     this.aircraftType = new AircraftType();
     this.tableMode = true;
   }
+  
   delete(p: AircraftType) {
-    this.dataService.deleteType(p.id)
-      .subscribe(data => this.loadTypes());
+    this.dataService.delete(p.id).subscribe(data => this.load());
   }
-  add() {
-    console.log(this.aircraftsTypes[0]);
-    this.cancel();
+
+  add(aircraftType) {
+    this.aircraftType = aircraftType;
     this.tableMode = false;
   }
 

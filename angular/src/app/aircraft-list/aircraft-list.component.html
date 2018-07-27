@@ -48,9 +48,8 @@
     <input type="text" [(ngModel)]="aircraft.exploitationTimeSpan" class="form-control" placeholder="3653.00:00:00" />
   </div>
   <label>Aircraft type</label>
-
   <div class="form-group">
-    <select [(ngModel)]="selectedAircraftTypes">
+    <select [(ngModel)]="selectedAircraftType">
       <option *ngFor="let item of aircraftTypes" [ngValue]="item">{{item.aircraftModel}}</option>
     </select>
   </div>
@@ -73,22 +72,3 @@
     <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
   </div>
 </ng-template>
-
-<!-- <ng-template #edit>
-  <div class="form-group">
-    <label>aircraft name</label>
-    <input type="text" [(ngModel)]="aircraft.aircraftName" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>aircraft release date</label>
-    <input type="text" [(ngModel)]="aircraft.aircraftReleaseDate" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Aircraft type</label>
-    <input type="text" [(ngModel)]="aircraft.aircraftType" class="form-control" />
-  </div>
-  <div>
-    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
-    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
-  </div>
-</ng-template> -->

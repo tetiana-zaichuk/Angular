@@ -1,58 +1,50 @@
-<h2>List of crews
-    <input type="button" value="Add" class="btn btn-default" (click)="add()" />
-  </h2>
-  
-  <div *ngIf="tableMode; else create">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>Id</td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let crew of crews" [class.selected]="crew === selectedCrew">
-        
-          <td>{{crew?.id}}</td>
-          <td>
-            <button class="btn btn-sm btn-primary" (click)="onSelect(crew)">Details</button>
-            <button class="btn btn-sm btn-primary" (click)="editType(crew)">Edit</button>
-            <button class="btn btn-sm btn-danger" (click)="delete(crew)">Delete</button>
-          </td>
-       
-        </tr>
-      </tbody>
-    </table>
-  
-    <crew-detail [crew]="selectedCrew"></crew-detail>
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="title-h2">List of crews</h2>
+    <input type="button" value="Add" class="btn btn-success add-btn" (click)="add(crew)" />
   </div>
-  
-  <ng-template #create>   
-    <div class="form-group">
-      <label>Pilot</label>
-      <input type="text" [(ngModel)]="crew.pilot" class="form-control" />
+</div>
+
+<div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row list-header">
+    <div class="col-md-3">Id</div>
+    <div class="col-md-3">Pilot first name</div>
+    <div class="col-md-3">Pilot last name</div>
+  </div>
+  <div *ngFor="let crew of crews; let i = index" class="row list-data-wrapper">
+
+    <div class="col-md-3">{{crew?.id}}</div>
+    <div class="col-md-3">{{crew?.pilot?.firstName}} {{crew?.pilot?.lastName}}</div>
+    <div class="col-md-3">{{crew?.stewardesses?.length}}</div>
+    <div class="col-md-3">
+      <a href="#crews-{{ i }}" class="btn btn-info" data-toggle="collapse">Details</a>
+      <button class="btn btn-success" (click)="add(crew)">Edit</button>
+      <button class="btn btn-danger" (click)="delete(crew)">Delete</button>
     </div>
-    <div class="form-group">
-      <label>Stewardesses</label>
-      <input type="text" [(ngModel)]="crew.stewardesses" class="form-control" />
+    <div class="col-md-12">
+      <div id="crews-{{ i }}" class="collapse">
+        <crew-detail [crew]="crew"></crew-detail>
+      </div>
     </div>
-    <div>
-      <input type="button" value="Save" (click)="save()" class="btn btn-success" />
-      <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
-    </div>
-  </ng-template>
-  
-  <ng-template #edit>
-      <div class="form-group">
-          <label>Pilot</label>
-          <input type="text" [(ngModel)]="crew.pilot" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label>Stewardesses</label>
-          <input type="text" [(ngModel)]="crew.stewardesses" class="form-control" />
-        </div>
-        <div>
-          <input type="button" value="Save" (click)="save()" class="btn btn-success" />
-          <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
-        </div>
-    </ng-template>
+
+  </div>
+</div>
+
+<ng-template #create>
+  <label>Pilot</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedPilot">
+      <option *ngFor="let pilot of pilots" [ngValue]="pilot">{{pilot.firstName}} {{pilot.lastName}}</option>
+    </select>
+  </div>
+  <label>Stewardesses</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedStewardesses">
+      <option *ngFor="let stewardess of stewardesses" [ngValue]="stewardess">{{stewardess.firstName}} {{stewardess.lastName}}</option>
+    </select>
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>
