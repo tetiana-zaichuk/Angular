@@ -21,4 +21,4 @@ import { TicketService } from '../Shared/Services/ticket.service';
   providers: [ AircraftTypeService, AircraftService, CrewService, DepartureService, 
     FlightService, PilotService, StewardessService, TicketService ]
 })
-export class ComponentsEightEntitiesModule { }
+export class ServicesEightEntitiesModule { }
