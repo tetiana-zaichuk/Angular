@@ -10,8 +10,7 @@ export class CrewService {
 
     private url = "/api/Crew";
 
-    constructor(private http: HttpClient) {
-    }
+    constructor(private http: HttpClient) {}
 
     get() {
         return this.http.get(this.url);

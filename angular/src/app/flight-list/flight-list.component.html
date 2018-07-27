@@ -1,58 +1,74 @@
 <div class="row">
+  <div class="col-md-12">
+    <h2 class="title-h2">List of flights </h2>
+  </div>
+</div>
+
+<div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row">
+    <div class="col-md-12 add-btn">
+      <hr/>
+      <input type="button" value="Add" class="btn btn-success" (click)="add(flight)" />
+      <hr/>
+    </div>
+  </div>
+  <div class="row list-header">
+    <div class="col-md-1">Id</div>
+    <div class="col-md-2">Departure</div>
+    <div class="col-md-2">Departure time</div>
+    <div class="col-md-2">Destination</div>
+    <div class="col-md-2">Arrival time</div>
+  </div>
+  <div *ngFor="let flight of flights; let i = index" class="row list-data-wrapper">
+    <div class="col-md-1">{{flight?.id}}</div>
+    <div class="col-md-2">{{flight?.departure}}</div>
+    <div class="col-md-2">{{flight?.departureTime | date:'short'}}</div>
+    <div class="col-md-2">{{flight?.destination}}</div>
+    <div class="col-md-2">{{flight?.arrivalTime | date:'short'}}</div>
+    <div class="col-md-3">
+      <a href="#flight-{{ i }}" class="btn btn-info" data-toggle="collapse">Details</a>
+      <button class="btn btn-success" (click)="add(flight)">Edit</button>
+      <button class="btn btn-danger" (click)="delete(flight)">Delete</button>
+    </div>
     <div class="col-md-12">
-      <h2 class="title-h2">List of flights </h2>
-      <input type="button" value="Add" class="btn btn-default add-btn" (click)="add()" />
-    </div>
-  </div>
-  
-  <div *ngIf="tableMode; else create" class="list-wrapper">
-    <div class="row list-header">
-        <div class="col-md-2">Departure</div>
-        <div class="col-md-2">Departure time</div>
-        <div class="col-md-2">Destination</div>
-        <div class="col-md-2">Arrival time</div>
-    </div>
-     <div *ngFor="let flight of flights; let i = index" [class.selected]="flight === selected" class="row list-data-wrapper">
-       
-        <div class="col-md-2">{{flight?.departure}}</div>
-        <div class="col-md-2">{{flight?.departureTime | date:'short'}}</div>
-        <div class="col-md-2">{{flight?.destination}}</div>
-        <div class="col-md-2">{{flight?.arrivalTime | date:'short'}}</div>    
-      <div class="col-md-4">
-        <a href="#flight-{{ i }}" class="btn btn-info" data-toggle="collapse" (click)="onSelect(flight)">Details</a>
-        <button class="btn btn-sm btn-primary" (click)="change(flight)">Edit</button>
-        <button class="btn btn-sm btn-danger" (click)="delete(flight)">Delete</button>
-      </div>
       <div id="flight-{{ i }}" class="collapse">
-        <!-- <flight-detail [flight]="selected"></flight-detail> -->
+        <flight-detail [flight]="flight"></flight-detail>
       </div>
     </div>
   </div>
-<!--     
-  <ng-template #create>
-    <div class="form-group">      
-        <label>Departure</label>
-        <input type="text" [(ngModel)]="flight.departure" class="form-control" />
-      </div>
-      <div class="form-group">
-          <label>Departure time</label>
-        <input type="text" [(ngModel)]="flight.departureTime" class="form-control" />
-      </div>
-      <div class="form-group">
-      <label>Destination</label>
-      <input type="text" [(ngModel)]="flight.destination" class="form-control" />
-    </div>
+</div>
+
+<ng-template #create>
+    <label>Departure id</label>
     <div class="form-group">
-      <label>Arrival time</label>
-      <input type="text" [(ngModel)]="flight.arrivalTime" class="form-control" />
-    </div>    
-    <div class="form-group">
-        <label>Tickets</label>
-        <input type="text" [(ngModel)]="flight.tickets" class="form-control" />
-      </div>  
-    <div>
-      <input type="button" value="Save" (click)="save()" class="btn btn-success" />
-      <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+      <select [(ngModel)]="selectedDeparture">
+        <option *ngFor="let item of departures" [ngValue]="item">{{item.id}}</option>
+      </select>
     </div>
-  </ng-template>
-  -->
+  <div class="form-group">
+    <label>Departure (place)</label>
+    <input type="text" [(ngModel)]="flight.departure" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Departure time</label>
+    <input type="text" [(ngModel)]="flight.departureTime" class="form-control" placeholder="7/15/18, 7:35 PM" />
+  </div>
+  <div class="form-group">
+    <label>Destination</label>
+    <input type="text" [(ngModel)]="flight.destination" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Arrival time</label>
+    <input type="text" [(ngModel)]="flight.arrivalTime" class="form-control" placeholder="7/15/18, 7:35 PM" />
+  </div>
+  <label>Tickets</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedTickets" multiple class="form-control">
+      <option *ngFor="let item of tickets" [ngValue]="item">Id: {{item.id}} - price: {{item.price}}</option>
+    </select>
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>

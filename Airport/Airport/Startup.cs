@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace PresentationLayer
 {
@@ -31,7 +32,9 @@ namespace PresentationLayer
 
             services.AddCors();
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
             //services.AddScoped<DataSeends>();
             //services.AddScoped<AirportContext>();
 

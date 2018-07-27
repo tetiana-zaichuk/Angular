@@ -7,16 +7,18 @@
     <div class="col-md-12">
 
       <div class="row detail-list-header">
-        <div class="col-md-3">Departure</div>
+          <div class="col-md-2">Departure id</div>
+        <div class="col-md-2">Departure (place)</div>
         <div class="col-md-3">Departure time</div>
         <div class="col-md-3">Destination</div>
-        <div class="col-md-3">Arrival time</div>
+        <div class="col-md-2">Arrival time</div>
       </div>
-      <div class="row">
-        <div class="col-md-3">{{flight?.departure}}</div>
+      <div class="row detail-list">
+          <div class="col-md-2">{{flight?.departureId}}</div>
+        <div class="col-md-2">{{flight?.departure}}</div>
         <div class="col-md-3">{{flight?.departureTime | date:'short'}}</div>
         <div class="col-md-3">{{flight?.destination}}</div>
-        <div class="col-md-3">{{flight?.arrivalTime | date:'short'}}</div>
+        <div class="col-md-2">{{flight?.arrivalTime | date:'short'}}</div>
       </div>
 
       <div class="row">
@@ -28,8 +30,7 @@
         <div class="col-md-6">Ticket: price</div>
         <div class="col-md-6">Ticket: flight id</div>
       </div>
-      <div *ngFor="let ticket of flight.tickets" class="row list-data-wrapper">
-
+      <div *ngFor="let ticket of flight.tickets" class="row detail-list list-data-wrapper">
         <div class="col-md-6">{{ticket?.price}}</div>
         <div class="col-md-6">{{ticket?.flightId}}</div>
       </div>

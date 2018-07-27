@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StewardessService } from '../Shared/Services/stewardess.service';
+import { CrewService } from '../Shared/Services/crew.service';
 import { Stewardess } from '../Shared/Models/stewardess';
+import { Crew } from '../Shared/Models/crew';
 
 @Component({
   selector: 'stewardess-list',
@@ -12,9 +14,10 @@ export class StewardessListComponent implements OnInit {
   stewardess: Stewardess = new Stewardess();
   stewardesses: Stewardess[];
   tableMode: boolean = true;
-  selectedStewardess: Stewardess;
+  crews: Crew[];
+  selectedCrew: Crew = new Crew();
 
-  constructor(private dataService: StewardessService) { }
+  constructor(private dataService: StewardessService, private crewService: CrewService) { }
 
   ngOnInit() {
     this.load();
@@ -22,13 +25,11 @@ export class StewardessListComponent implements OnInit {
 
   load() {
     this.dataService.get().subscribe((data: Stewardess[]) => this.stewardesses = data);
-  }
-
-  onSelect(data: Stewardess): void {
-    this.selectedStewardess = data;
+    this.crewService.get().subscribe((data: Crew[]) => this.crews = data);
   }
 
   save() {
+    this.stewardess.crewId=this.selectedCrew.id;
     if (this.stewardess.id == null) {
       this.dataService.create(this.stewardess).subscribe((data: Stewardess) => this.stewardesses.push(data));
     } else {
@@ -36,19 +37,18 @@ export class StewardessListComponent implements OnInit {
     }
     this.cancel();
   }
-  edit(stewardess: Stewardess) {
-    this.stewardess = stewardess;
-  }
+
   cancel() {
     this.stewardess = new Stewardess();
     this.tableMode = true;
   }
+
   delete(stewardess: Stewardess) {
     this.dataService.delete(stewardess.id).subscribe(data => this.load());
   }
-  add() {
-    console.log(this.stewardess[0]);
-    this.cancel();
+
+  add(stewardess) {
+    this.stewardess = stewardess;
     this.tableMode = false;
   }
 

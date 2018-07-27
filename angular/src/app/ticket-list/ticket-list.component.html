@@ -1,11 +1,17 @@
 <div class="row">
   <div class="col-md-12">
     <h2 class="title-h2">List of tickets </h2>
-    <input type="button" value="Add" class="btn btn-success add-btn" (click)="add(ticket)" />
   </div>
 </div>
 
 <div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row">
+    <div class="col-md-12 add-btn">
+      <hr/>
+      <input type="button" value="Add" class="btn btn-success" (click)="add(ticket)" />
+      <hr/>
+    </div>
+  </div>
   <div class="row list-header">
     <div class="col-md-5">Price</div>
     <div class="col-md-4">Flight id</div>
@@ -31,10 +37,13 @@
     <label>Price</label>
     <input type="text" [(ngModel)]="ticket.price" class="form-control" placeholder="1,050.00" />
   </div>
+  <label>Flight id</label>
   <div class="form-group">
-    <label>Flight id</label>
-    <input type="text" [(ngModel)]="ticket.flightId" class="form-control" />
+    <select [(ngModel)]="selectedFlight">
+      <option *ngFor="let flight of flights" [ngValue]="flight">{{flight.id}}</option>
+    </select>
   </div>
+
   <div>
     <input type="button" value="Save" (click)="save()" class="btn btn-success" />
     <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />

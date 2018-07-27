@@ -1,52 +1,62 @@
 <div class="row">
+  <div class="col-md-12">
+    <h2 class="title-h2">List of stewardesses </h2>
+  </div>
+</div>
+
+<div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row">
+    <div class="col-md-12 add-btn">
+      <hr/>
+      <input type="button" value="Add" class="btn btn-success" (click)="add(stewardess)" />
+      <hr/>
+    </div>
+  </div>
+
+  <div class="row list-header">
+    <div class="col-md-3">First name</div>
+    <div class="col-md-3">Last name</div>
+    <div class="col-md-3">Crew id</div>
+  </div>
+  <div *ngFor="let stewardess of stewardesses; let i = index" class="row list-data-wrapper">
+
+    <div class="col-md-3">{{stewardess?.firstName}}</div>
+    <div class="col-md-3">{{stewardess?.lastName}}</div>
+    <div class="col-md-3">{{stewardess?.crewId}}</div>
+    <div class="col-md-3">
+      <a href="#stewardesses-{{ i }}" class="btn btn-info" data-toggle="collapse">Details</a>
+      <button class="btn btn-success" (click)="add(stewardess)">Edit</button>
+      <button class="btn btn-danger" (click)="delete(stewardess)">Delete</button>
+    </div>
     <div class="col-md-12">
-      <h2 class="title-h2">List of stewardesses </h2>
-      <input type="button" value="Add" class="btn btn-success add-btn" (click)="add()" />
-    </div>
-  </div>
-  
-  <div *ngIf="tableMode; else create" class="list-wrapper">
-    <div class="row list-header">
-      <div class="col-md-3">First name</div>
-      <div class="col-md-3">Last name</div>
-      <div class="col-md-3">Crew id</div>
-    </div>
-     <div *ngFor="let stewardess of stewardesses; let i = index" [class.selected]="stewardess === selectedStewardess" class="row list-data-wrapper">
-  
-      <div class="col-md-3">{{stewardess?.firstName}}</div>
-      <div class="col-md-3">{{stewardess?.lastName}}</div>
-      <div class="col-md-3">{{stewardess?.crewId}}</div>
-      <div class="col-md-3">
-        <a href="#stewardesses-{{ i }}" class="btn btn-info" data-toggle="collapse" (click)="onSelect(stewardess)">Details</a>
-        <button class="btn btn-success" (click)="change(stewardess)">Edit</button>
-        <button class="btn btn-danger" (click)="delete(stewardess)">Delete</button>
-      </div>
       <div id="stewardesses-{{ i }}" class="collapse">
-          <stewardess-detail [stewardess]="selectedStewardess"></stewardess-detail>
+        <stewardess-detail [stewardess]="stewardess"></stewardess-detail>
       </div>
     </div>
   </div>
-  
-  <ng-template #create>
-    <div class="form-group">
-      <label>First name</label>
-      <input type="text" [(ngModel)]="stewardess.firstName" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>Last name</label>
-      <input type="text" [(ngModel)]="stewardess.lastName" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>DOB</label>
-      <input type="text" [(ngModel)]="stewardess.dob" class="form-control" placeholder="March 3, 1978"/>
-    </div>   
-    <div class="form-group">
-      <label>Crew id</label>
-      <input type="text" [(ngModel)]="stewardess.crewId" class="form-control" />
-    </div>
-    <div>
-      <input type="button" value="Save" (click)="save()" class="btn btn-success" />
-      <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
-    </div>
-  </ng-template>
-  
+</div>
+
+<ng-template #create>
+  <div class="form-group">
+    <label>First name</label>
+    <input type="text" [(ngModel)]="stewardess.firstName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Last name</label>
+    <input type="text" [(ngModel)]="stewardess.lastName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>DOB</label>
+    <input type="text" [(ngModel)]="stewardess.dob" class="form-control" placeholder="March 3, 1978" />
+  </div>
+  <label>Crew id</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedCrew">
+      <option *ngFor="let crew of crews" [ngValue]="crew">{{crew.id}}</option>
+    </select>
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>

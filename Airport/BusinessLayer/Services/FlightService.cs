@@ -43,8 +43,8 @@ namespace BusinessLayer.Services
         public async Task<List<Flight>> GetAllAsync()
         {
             return _mapper.Map<List<DataAccessLayer.Models.Flight>, List<Flight>>(
-                // await _unitOfWork.FlightRepository.GetAsync());
-                await UseTimer());
+                 await _unitOfWork.FlightRepository.GetAsync());
+               // await UseTimer());
         }
 
         public async Task<List<DataAccessLayer.Models.Flight>> UseTimer()

@@ -1,26 +1,34 @@
 <div class="row">
   <div class="col-md-12">
     <h2 class="title-h2">List of departures </h2>
-    <input type="button" value="Add" class="btn btn-success add-btn" (click)="add()" />
   </div>
 </div>
 
 <div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row">
+    <div class="col-md-12 add-btn">
+      <hr/>
+      <input type="button" value="Add" class="btn btn-success" (click)="add(departure)" />
+      <hr/>
+    </div>
+  </div>
   <div class="row list-header">
     <div class="col-md-4">Departure id</div>
     <div class="col-md-5">Departure date</div>
   </div>
-  <div *ngFor="let departure of departures; let i = index" [class.selected]="departure === selected" class="row list-data-wrapper">
+  <div *ngFor="let departure of departures; let i = index" class="row list-data-wrapper">
 
     <div class="col-md-4">{{departure?.id}}</div>
     <div class="col-md-5">{{departure?.departureDate | date:'short'}}</div>
     <div class="col-md-3">
-      <a href="#departures-{{ i }}" class="btn btn-info" data-toggle="collapse" (click)="onSelect(departure)">Details</a>
-      <button class="btn btn-success" (click)="change(departure)">Edit</button>
+      <a href="#departures-{{ i }}" class="btn btn-info" data-toggle="collapse">Details</a>
+      <button class="btn btn-success" (click)="add(departure)">Edit</button>
       <button class="btn btn-danger" (click)="delete(departure)">Delete</button>
     </div>
-    <div id="departures-{{ i }}" class="collapse">
-      <departure-detail [departure]="selected"></departure-detail>
+    <div class="col-md-12">
+      <div id="departures-{{ i }}" class="collapse">
+        <departure-detail [departure]="departure"></departure-detail>
+      </div>
     </div>
   </div>
 </div>
@@ -30,7 +38,7 @@
     <label>Departure date</label>
     <input type="text" [(ngModel)]="departure.departureDate" class="form-control" placeholder="7/15/18, 7:35 PM" />
   </div>
-  <!-- <label>Aircraft</label>
+  <!-- 
   <div class="form-group">
     <label>Aircraft name</label>
     <input type="text" [(ngModel)]="departure.aircraft.aircraftName" class="form-control" />
@@ -43,15 +51,26 @@
     <label>Exploitation time span</label>
     <input type="text" [(ngModel)]="departure.aircraft.exploitationTimeSpan" class="form-control" />
   </div> -->
-  
+  <label>Aircraft</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedAircraft">
+      <option *ngFor="let item of aircrafts" [ngValue]="item">{{item.aircraftName}}</option>
+    </select>
+  </div>
   <label>Flight</label>
   <div class="form-group">
+    <select [(ngModel)]="selectedFlight">
+      <option *ngFor="let item of flights" [ngValue]="item">{{item.departure}} - {{item.destination}}</option>
+    </select>
+  </div>
+
+  <!-- <div class="form-group">
     <label>Departure</label>
     <input type="text" [(ngModel)]="departure.flight.departure" class="form-control" />
   </div>
   <div class="form-group">
     <label>Departure time</label>
-    <input type="text" [(ngModel)]="departure.flight.departureTime" class="form-control" placeholder="7/15/18, 7:35 PM"/>
+    <input type="text" [(ngModel)]="departure.flight.departureTime" class="form-control" placeholder="7/15/18, 7:35 PM" />
   </div>
   <div class="form-group">
     <label>Destination</label>
@@ -59,13 +78,20 @@
   </div>
   <div class="form-group">
     <label>Arrival time</label>
-    <input type="text" [(ngModel)]="departure.flight.arrivalTime" class="form-control" placeholder="7/15/18, 7:35 PM"/>
+    <input type="text" [(ngModel)]="departure.flight.arrivalTime" class="form-control" placeholder="7/15/18, 7:35 PM" />
+  </div> -->
+  <label>Crew</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedCrew">
+      <option *ngFor="let item of crews" [ngValue]="item">{{item.id}}</option>
+    </select>
   </div>
 
-  <div class="form-group">
-    <label>Crew id</label>
+  <!-- <div class="form-group">
+   
     <input type="text" [(ngModel)]="departure.crew.id" class="form-control" />
-  </div>
+  </div> -->
+
   <div>
     <input type="button" value="Save" (click)="save()" class="btn btn-success" />
     <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />

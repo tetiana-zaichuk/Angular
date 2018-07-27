@@ -17,8 +17,8 @@ export class CrewListComponent implements OnInit {
   crews: Crew[];
   selectedPilot: Pilot = new Pilot();
   pilots: Pilot[];
-  stewardesses: Stewardess[];  
-  selectedStewardesses: Stewardess = new Stewardess();
+  stewardesses: Stewardess[];
+  selectedStewardesses: Stewardess[];
   tableMode: boolean = true;
 
   constructor(private CrewService: CrewService, private PilotService: PilotService, private StewardessService: StewardessService) { }
@@ -34,8 +34,8 @@ export class CrewListComponent implements OnInit {
   }
 
   save() {
-    this.crew.pilot=this.selectedPilot;
-    this.crew.stewardesses.push(this.selectedStewardesses);
+    this.crew.pilot = this.selectedPilot;
+    this.crew.stewardesses = this.selectedStewardesses;
     if (this.crew.id == null) {
       this.CrewService.create(this.crew).subscribe((data: Crew) => this.crews.push(data));
     } else {

@@ -19,7 +19,12 @@ namespace PresentationLayer.Controllers
 
         // GET api/Flights
         [HttpGet]
-        public async Task<List<Flight>> GetFlights() => await Services.GetAllAsync();
+        //public async Task<List<Flight>> GetFlights() => await Services.GetAllAsync();
+        public async Task<List<Flight>> GetFlights()
+        {
+            var flights = await Services.GetAllAsync();
+            return flights;
+        }
 
         // GET api/Flights/5
         [HttpGet("{id}")]

@@ -1,11 +1,17 @@
 <div class="row">
   <div class="col-md-12">
     <h2 class="title-h2">List of aircrafts </h2>
-    <input type="button" value="Add" class="btn btn-success add-btn" (click)="add(aircraft)" />
   </div>
 </div>
 
 <div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row">
+    <div class="col-md-12 add-btn">
+      <hr/>
+      <input type="button" value="Add" class="btn btn-success" (click)="add(aircraft)" />
+      <hr/>
+    </div>
+  </div>
   <div class="row list-header">
     <div class="col-md-3">Aircraft release date</div>
     <div class="col-md-3">Aircraft name</div>

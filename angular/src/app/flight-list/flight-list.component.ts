@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightService } from '../Shared/Services/flight.service';
+import { TicketService } from '../Shared/Services/ticket.service';
+import { DepartureService } from '../Shared/Services/departure.service';
+import { Departure } from '../Shared/Models/departure';
+import { Ticket } from '../Shared/Models/ticket';
 import { Flight } from '../Shared/Models/flight';
 
 @Component({
@@ -11,48 +15,44 @@ export class FlightListComponent implements OnInit {
   flight: Flight = new Flight();
   flights: Flight[];
   tableMode: boolean = true;
-  selected: Flight;
+  selectedTickets: Ticket[];
+  tickets: Ticket[];
+  departures: Departure[];
+  selectedDeparture: Departure = new Departure();
 
-  constructor(private dataService: FlightService) { }
+  constructor(private flightService: FlightService, private ticketService: TicketService, private departureService: DepartureService) { }
 
   ngOnInit() {
     this.load();
   }
 
   load() {
-    this.dataService.get().subscribe((data: Flight[]) => this.flights = data);
+    this.flightService.get().subscribe((data: Flight[]) => this.flights = data);
+    this.ticketService.get().subscribe((data: Ticket[]) => this.tickets = data);
+    this.departureService.get().subscribe((data: Departure[]) => this.departures = data);
   }
 
-  onSelect(data: Flight): void {
-    this.selected = data;
-  }
-  change(flight?: Flight){
-    this.flight = flight;
-    console.log(this.flights[0]);
-    this.cancel();
-    this.tableMode = false;
-  }
   save() {
+    this.flight.tickets=this.selectedTickets;
     if (this.flight.id == null) {
-      this.dataService.create(this.flight).subscribe((data: Flight) => this.flights.push(data));
+      this.flightService.create(this.flight).subscribe((data: Flight) => this.flights.push(data));
     } else {
-      this.dataService.update(this.flight).subscribe(data => this.load());
+      this.flightService.update(this.flight).subscribe(data => this.load());
     }
     this.cancel();
   }
-  edit(flight: Flight) {
-    this.flight = flight;
-  }
+
   cancel() {
     this.flight = new Flight();
     this.tableMode = true;
   }
+
   delete(flight: Flight) {
-    this.dataService.delete(flight.id).subscribe(data => this.load());
+    this.flightService.delete(flight.id).subscribe(data => this.load());
   }
-  add() {
-    console.log(this.flights[0]);
-    this.cancel();
+
+  add(flight) {
+    this.flight = flight;
     this.tableMode = false;
   }
 }
