@@ -14,7 +14,6 @@ import { DepartureDetailComponent } from './departure-list/departure-detail/depa
 const routes: Routes = [
   { path: '', redirectTo: '/flights', pathMatch: 'full' },
   { path: 'flights', component: FlightListComponent },
-  { path: 'departure/:id', component: DepartureDetailComponent },
   { path: 'departures', component: DepartureListComponent },
   { path: 'aircrafts', component: AircraftListComponent },
   { path: 'crews', component: CrewListComponent },
