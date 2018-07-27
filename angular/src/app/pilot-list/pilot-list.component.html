@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="title-h2">List of pilots </h2>
+  </div>
+</div>
+
+<div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row">
+    <div class="col-md-12 add-btn">
+      <hr/>
+      <input type="button" value="Add" class="btn btn-success" (click)="add(pilot)" />
+      <hr/>
+    </div>
+  </div>
+  <div class="row list-header">
+    <div class="col-md-3">First name</div>
+    <div class="col-md-3">Last name</div>
+    <div class="col-md-3">Experience</div>
+  </div>
+  <div *ngFor="let pilot of pilots; let i = index" class="row list-data-wrapper">
+
+    <div class="col-md-3">{{pilot?.firstName}}</div>
+    <div class="col-md-3">{{pilot?.lastName}}</div>
+    <div class="col-md-3">{{pilot?.experience}}</div>
+    <div class="col-md-3">
+      <a href="#pilots-{{ i }}" class="btn btn-info" data-toggle="collapse">Details</a>
+      <button class="btn btn-success" (click)="add(pilot)">Edit</button>
+      <button class="btn btn-danger" (click)="delete(pilot)">Delete</button>
+    </div>
+    <div class="col-md-12">
+      <div id="pilots-{{ i }}" class="collapse">
+        <pilot-detail [pilot]="pilot"></pilot-detail>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #create>
+  <div class="form-group">
+    <label>First name</label>
+    <input type="text" [(ngModel)]="pilot.firstName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Last name</label>
+    <input type="text" [(ngModel)]="pilot.lastName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>DOB</label>
+    <input type="text" [(ngModel)]="pilot.dob" class="form-control" placeholder="March 3, 1978" />
+  </div>
+  <div class="form-group">
+    <label>Experience</label>
+    <input type="text" [(ngModel)]="pilot.experience" class="form-control" />
+  </div>
+  <label>Crew id</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedCrew">
+      <option *ngFor="let crew of crews" [ngValue]="crew">{{crew.id}}</option>
+    </select>
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>

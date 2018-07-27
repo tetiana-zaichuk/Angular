@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="title-h2">List of aircrafts </h2>
+  </div>
+</div>
+
+<div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row">
+    <div class="col-md-12 add-btn">
+      <hr/>
+      <input type="button" value="Add" class="btn btn-success" (click)="add(aircraft)" />
+      <hr/>
+    </div>
+  </div>
+  <div class="row list-header">
+    <div class="col-md-3">Aircraft release date</div>
+    <div class="col-md-3">Aircraft name</div>
+    <div class="col-md-3">Exploitation time span</div>
+  </div>
+  <div *ngFor="let aircraft of aircrafts; let i = index" class="row list-data-wrapper">
+
+    <div class="col-md-3">{{aircraft?.aircraftReleaseDate | date:'longDate'}}</div>
+    <div class="col-md-3">{{aircraft?.aircraftName}}</div>
+    <div class="col-md-3">{{aircraft?.exploitationTimeSpan}}</div>
+    <div class="col-md-3">
+      <a href="#aircrafts-{{ i }}" class="btn btn-info" data-toggle="collapse">Details</a>
+      <button class="btn btn-success" (click)="add(aircraft)">Edit</button>
+      <button class="btn btn-danger" (click)="delete(aircraft)">Delete</button>
+    </div>
+    <div class="col-md-12">
+      <div id="aircrafts-{{ i }}" class="collapse">
+        <aircraft-detail [aircraft]="aircraft"></aircraft-detail>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- <tr [class.selected]="aircraft === selectedAircraft"> -->
+<!--(click)="onSelect(aircraft)">    -->
+<!-- [ngIf]="aircraft?.id != a.id" [ngIfElse]="edit" -->
+
+<ng-template #create>
+  <div class="form-group">
+    <label>Aircraft name</label>
+    <input type="text" [(ngModel)]="aircraft.aircraftName" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Aircraft release date</label>
+    <input type="text" [(ngModel)]="aircraft.aircraftReleaseDate" class="form-control" placeholder="June 10, 2011" />
+  </div>
+  <div class="form-group">
+    <label>Exploitation time span</label>
+    <input type="text" [(ngModel)]="aircraft.exploitationTimeSpan" class="form-control" placeholder="3653.00:00:00" />
+  </div>
+  <label>Aircraft type</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedAircraftType">
+      <option *ngFor="let item of aircraftTypes" [ngValue]="item">{{item.aircraftModel}}</option>
+    </select>
+  </div>
+
+
+  <!-- <label>Aircraft model</label>
+    <input type="text" [(ngModel)]="aircraft.aircraftType.aircraftModel" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Seats number</label>
+    <input type="text" [(ngModel)]="aircraft.aircraftType.seatsNumber" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label>Carrying</label>
+    <input type="text" [(ngModel)]="aircraft.aircraftType.carrying" class="form-control" />
+  </div> -->
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>

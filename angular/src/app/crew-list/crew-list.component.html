@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="title-h2">List of crews</h2>
+  </div>
+</div>
+
+<div *ngIf="tableMode; else create" class="list-wrapper">
+  <div class="row">
+    <div class="col-md-12 add-btn">
+      <hr/>
+      <input type="button" value="Add" class="btn btn-success" (click)="add(crew)" />
+      <hr/>
+    </div>
+  </div>
+  <div class="row list-header">
+    <div class="col-md-3">Id</div>
+    <div class="col-md-3">Pilot first name</div>
+    <div class="col-md-3">Pilot last name</div>
+  </div>
+  <div *ngFor="let crew of crews; let i = index" class="row list-data-wrapper">
+
+    <div class="col-md-3">{{crew?.id}}</div>
+    <div class="col-md-3">{{crew?.pilot?.firstName}} {{crew?.pilot?.lastName}}</div>
+    <div class="col-md-3">{{crew?.stewardesses?.length}}</div>
+    <div class="col-md-3">
+      <a href="#crews-{{ i }}" class="btn btn-info" data-toggle="collapse">Details</a>
+      <button class="btn btn-success" (click)="add(crew)">Edit</button>
+      <button class="btn btn-danger" (click)="delete(crew)">Delete</button>
+    </div>
+    <div class="col-md-12">
+      <div id="crews-{{ i }}" class="collapse">
+        <crew-detail [crew]="crew"></crew-detail>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #create>
+  <label>Pilot</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedPilot">
+      <option *ngFor="let pilot of pilots" [ngValue]="pilot">{{pilot.firstName}} {{pilot.lastName}}</option>
+    </select>
+  </div>
+  <label>Stewardesses</label>
+  <div class="form-group">
+    <select [(ngModel)]="selectedStewardesses" multiple class="form-control">
+      <option *ngFor="let stewardess of stewardesses" [ngValue]="stewardess">{{stewardess.firstName}} {{stewardess.lastName}}</option>
+    </select>
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>

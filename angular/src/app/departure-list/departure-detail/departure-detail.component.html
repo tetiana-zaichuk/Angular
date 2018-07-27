@@ -1,0 +1,63 @@
+<div class="col-md-12 " *ngIf="departure">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h4>Details</h4>
+    </div>
+    <div class="col-md-12">
+
+      <div class="row detail-list-header">
+        <div class="col-md-4">Departure id</div>
+        <div class="col-md-4">Departure date</div>
+        <div class="col-md-4">Crew id</div>
+      </div>
+      <div class="row detail-list">
+        <div class="col-md-4">{{departure?.id}}</div>
+        <div class="col-md-4">{{departure?.departureDate | date:'short'}}</div>
+        <div class="col-md-4">{{departure?.crew?.id}}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Flight</h4>
+        </div>
+      </div>
+      <div class="row detail-list-header">
+        <div class="col-md-3">Departure</div>
+        <div class="col-md-3">Departure time</div>
+        <div class="col-md-3">Destination</div>
+        <div class="col-md-3">Arrival time</div>
+      </div>
+      <div class="row detail-list">
+        <div class="col-md-3">{{departure?.flight?.departure}}</div>
+        <div class="col-md-3">{{departure?.flight?.departureTime | date:'short'}}</div>
+        <div class="col-md-3">{{departure?.flight?.destination}}</div>
+        <div class="col-md-3">{{departure?.flight?.arrivalTime | date:'short'}}</div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-md-12">
+          <h4>Crew</h4>
+        </div>
+      </div>
+      <div class="row detail-list-header">
+        <div class="col-md-2">Crew id</div>
+        <div class="col-md-2">Pilot first name</div>
+        <div class="col-md-2">Pilot last name</div>
+        <div class="col-md-2">Pilot DOB</div>
+        <div class="col-md-2">Pilot experience</div>
+        <div class="col-md-2">Number of stewardesses</div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">{{departure?.crew?.id}}</div>
+        <div class="col-md-2">{{departure?.crew?.pilot?.firstName}}</div>
+        <div class="col-md-2">{{departure?.crew?.pilot?.lastName}}</div>
+        <div class="col-md-2">{{departure?.crew?.pilot?.experience}}</div>
+        <div class="col-md-2">{{departure?.crew?.pilot?.dob | date:'short'}}</div>
+        <div class="col-md-2">{{departure?.crew?.stewardesses}}</div>
+      </div> -->
+
+    </div>
+
+  </div>
+</div>

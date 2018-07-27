@@ -1,0 +1,15 @@
+.title-h2{
+    text-align: center;   
+    color: #761212;   
+}
+.add-btn{
+    margin: 3px;
+    text-align: center;
+}
+.list-header{
+    background:  #d9edf7;
+    font-weight: 700;
+}
+.list-data-wrapper > div{
+    line-height: 47px;
+}

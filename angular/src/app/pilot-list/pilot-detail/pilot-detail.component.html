@@ -1,0 +1,25 @@
+<div class="col-md-12 " *ngIf="pilot">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h4>Details</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="row detail-list-header">
+        <div class="col-md-3">First name</div>
+        <div class="col-md-3">Last name</div>
+        <div class="col-md-2">DOB</div>
+        <div class="col-md-2">Experience</div>
+        <div class="col-md-2">Crew id</div>
+      </div>
+      <div class="row detail-list">
+        <div class="col-md-3">{{pilot?.firstName}}</div>
+        <div class="col-md-3">{{pilot?.lastName}}</div>
+        <div class="col-md-2">{{pilot?.dob | date:'longDate'}}</div>
+        <div class="col-md-2">{{pilot?.experience}}</div>
+        <div class="col-md-2">{{pilot?.crewId}}</div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="col-md-12 " *ngIf="aircrafttype">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h4>Details</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="row detail-list-header">
+        <div class="col-md-4">Aircraft model</div>
+        <div class="col-md-4">Seats number</div>
+        <div class="col-md-4">Carrying</div>
+      </div>
+      <div class="row detail-list">
+        <div class="col-md-4">{{aircrafttype?.aircraftModel}}</div>
+        <div class="col-md-4">{{aircrafttype?.seatsNumber}}</div>
+        <div class="col-md-4">{{aircrafttype?.carrying}}</div>
+      </div>
+    </div>
+
+  </div>
+</div>
