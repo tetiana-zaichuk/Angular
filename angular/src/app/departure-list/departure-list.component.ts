@@ -44,9 +44,9 @@ export class DepartureListComponent implements OnInit {
   }
 
   save() {
-    this.departure.flight = this.selectedFlight;
-    this.departure.aircraft = this.selectedAircraft;
-    this.departure.crew = this.selectedCrew;
+    this.departure.flight = null; //this.selectedFlight;
+    this.departure.aircraft = null; //this.selectedAircraft;
+    this.departure.crew = null; //this.selectedCrew;
     if (this.departure.id == null) {
       this.departureService.create(this.departure).subscribe((data: Departure) => this.departures.push(data));
     } else {

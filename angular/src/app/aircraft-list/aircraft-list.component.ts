@@ -34,7 +34,7 @@ export class AircraftListComponent implements OnInit {
 
   save() {
     
-    this.aircraft.aircraftType=this.selectedAircraftType;
+    //this.aircraft.aircraftType=this.selectedAircraftType;
     console.log(this.aircraft);
     if (this.aircraft.id == null) {
       this.aircraft.id=0;

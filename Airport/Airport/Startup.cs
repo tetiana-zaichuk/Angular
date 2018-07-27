@@ -29,9 +29,7 @@ namespace PresentationLayer
         {
             //string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AirportContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Airportdb;Trusted_Connection=True;"));
-
-            services.AddCors();
-
+            
             services.AddMvc().AddJsonOptions(options => {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
@@ -56,6 +54,8 @@ namespace PresentationLayer
             services.AddScoped<IService<Shared.DTO.Ticket>, TicketService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IMapper>(m => GetAutoMapperConfig().CreateMapper());
+
+            services.AddCors();
         }
 
         private MapperConfiguration GetAutoMapperConfig()

@@ -34,8 +34,8 @@ export class CrewListComponent implements OnInit {
   }
 
   save() {
-    this.crew.pilot = this.selectedPilot;
-    this.crew.stewardesses = this.selectedStewardesses;
+    //this.crew.pilot = this.selectedPilot;
+    this.crew.stewardesses = null;//this.selectedStewardesses;
     if (this.crew.id == null) {
       this.CrewService.create(this.crew).subscribe((data: Crew) => this.crews.push(data));
     } else {

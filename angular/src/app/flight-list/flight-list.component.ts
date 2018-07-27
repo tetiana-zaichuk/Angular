@@ -33,7 +33,7 @@ export class FlightListComponent implements OnInit {
   }
 
   save() {
-    this.flight.tickets=this.selectedTickets;
+    this.flight.tickets=null; //this.selectedTickets;
     if (this.flight.id == null) {
       this.flightService.create(this.flight).subscribe((data: Flight) => this.flights.push(data));
     } else {

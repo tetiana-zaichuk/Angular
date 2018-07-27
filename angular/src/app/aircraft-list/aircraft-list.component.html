@@ -54,14 +54,14 @@
     <input type="text" [(ngModel)]="aircraft.exploitationTimeSpan" class="form-control" placeholder="3653.00:00:00" />
   </div>
   <label>Aircraft type</label>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <select [(ngModel)]="selectedAircraftType">
       <option *ngFor="let item of aircraftTypes" [ngValue]="item">{{item.aircraftModel}}</option>
     </select>
-  </div>
+  </div> -->
 
-
-  <!-- <label>Aircraft model</label>
+  <div class="form-group">
+  <label>Aircraft model</label>
     <input type="text" [(ngModel)]="aircraft.aircraftType.aircraftModel" class="form-control" />
   </div>
   <div class="form-group">
@@ -72,7 +72,7 @@
   <div class="form-group">
     <label>Carrying</label>
     <input type="text" [(ngModel)]="aircraft.aircraftType.carrying" class="form-control" />
-  </div> -->
+  </div>
   <div>
     <input type="button" value="Save" (click)="save()" class="btn btn-success" />
     <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
