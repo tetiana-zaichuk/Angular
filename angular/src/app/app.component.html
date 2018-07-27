@@ -1,64 +1,14 @@
-<nav class="navbar navbar-inverse">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- <a class="navbar-brand">aaa</a> -->
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a routerLink="/flights">Flights</a>
-                </li>
-                <li>
-                    <a routerLink="/departures">Departures</a>
-                </li>
-                <li>
-                    <a routerLink="/aircrafts">Aircrafts</a>
-                </li>
-                <li>
-                    <a routerLink="/crews">Crews</a>
-                </li>
-                <li>
-                    <a routerLink="/aircraftsTypes">Aircrafts types</a>
-                </li>
-                <li>
-                    <a routerLink="/pilots">Pilots</a>
-                </li>
-                <li>
-                    <a routerLink="/stewardesses">Stewardesses</a>
-                </li>
-                <li>
-                    <a routerLink="/tickets">Tickets</a>
-                </li>
-            </ul>
+<div class=”main-container”><div class="body">
+    <app-navigation></app-navigation>
+
+    <div class="container body-content">
+        <div class="row">
+            <router-outlet></router-outlet>
         </div>
     </div>
-</nav>
-
-<div class="container body-content">
-    <div class="row">
-       
-        <router-outlet></router-outlet>
-        <!-- <aircraft-type-list></aircraft-type-list>
-            <aircraft-list></aircraft-list>
-            <departure-list></departure-list>
-            <pilot-list></pilot-list>
-            <stewardess-list></stewardess-list> <ticket-list></ticket-list>
-             -->
-    </div>
-
 </div>
-<hr />
-<footer>
-    <p>&copy; 2018 - Airport</p>
-</footer>
-
-
-<!--     <div class="container">
-     <crew-list></crew-list> 
-<flight-list></flight-list>  
--->
+    <footer>
+        <hr />
+        <p>&copy; 2018 - Airport</p>
+    </footer>
+</div>
